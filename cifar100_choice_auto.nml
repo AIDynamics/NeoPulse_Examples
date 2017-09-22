@@ -1,0 +1,47 @@
+oracle("generated") = 4
+
+source:
+    bind = "/DM-Dash/domtest/upload/cifar100_data.csv" ;
+    input:
+        x ~ from "Image"
+            -> image: [shape=[32, 32], channels=3]
+            -> ImageDataGenerator: [rescale= 0.003921568627451];
+    output:
+        y ~ from "Class"-> flat: [100]
+            -> FlatDataGenerator: [] ;
+    params:
+        number_validation = 10000 ,
+        batch_size=32 ;
+
+architecture:
+    input:  x ~ image: [shape=[32, 32], channels=3] ;
+    output: y ~ flat: [100] ;
+
+    x -> Conv2D: [32,[3,3]]
+      -> Activation: ['relu']
+      -> Conv2D: [32,[3,3]]
+      -> Activation: ['relu']
+      -> MaxPooling2D: [pool_size=3]
+      -> Dropout: [auto(0.25 ? 0.75 | name = "Drop")]
+      -> Conv2D: [64,[3,3]]
+      -> Activation: ['relu']
+      -> Conv2D: [64,[3,3]]
+      -> Activation: ['relu']
+      -> MaxPooling2D: [pool_size=3]
+      -> Dropout: [auto(0.25 ? 0.75 | name = "Drop")]
+      -> Flatten: []
+      -> Dense: [512]
+      -> Activation: ['relu']
+      -> Dropout: [auto(0.25 ? 0.75 | name = "Drop")]
+      -> Dense: [100]
+      -> Activation: ['softmax']
+      -> y ;
+
+train:
+    compile:
+        optimizer = 'rmsprop',
+        loss = 'binary_crossentropy',
+        metrics = ['accuracy'] ;
+    run:
+        epochs = 4 ;
+    dashboard: ;
