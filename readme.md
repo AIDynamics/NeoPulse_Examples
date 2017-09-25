@@ -1,13 +1,15 @@
 # Introduction
-This is a tutorial for CIFAR-10 in [NeoPulse™ AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
+This is a tutorial for CIFAR-10 and CIFAR-100 in [NeoPulse™ AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
 
 [CIFAR-10](http://www.cs.toronto.edu/~kriz/cifar.html), an image classification dataset contains 60000 32X32 color images with 6000 images per class. There are 50000 training images and 10000 test images.
+
+[CIFAR-100](http://www.cs.toronto.edu/~kriz/cifar.html) is very similar to CIFAR-10 except it contains 100 classes with 600 images per class (500 training and 100 testing). The 100 classes are under 20 superclasses ('coarse labels'). 
 
 # Tutorial Videos
 Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/developer)
 
 # Tutorial Files
-The following NeoPulse Modeling Language (NML) scripts can be used to train the CIFAR-10 dataset in NeoPulse™ AI Studio. Each file demonstrates a different level of direct hints in building a model architecture (more details on [direct hints](https://docs.neopulse.ai/NML-Oracle-direct/)):
+The following NeoPulse Modeling Language (NML) scripts can be used to train the CIFAR-10 and CIFAR-100 datasets in NeoPulse™ AI Studio. Each file demonstrates a different level of direct hints in building a model architecture (more details on [direct hints](https://docs.neopulse.ai/NML-Oracle-direct/)):
 
 **build_csv.py:** This program extracts and writes images and labels to CSV file, saves images  
 
@@ -19,6 +21,7 @@ The following NeoPulse Modeling Language (NML) scripts can be used to train the 
 
 **cifar10_dist_auto.nml:** Demonstrates distribution syntax
 
+CIFAR-100 files follow the exact format as the files above.
 
 # Download
 Files in this repository are easily accessible by [cloning this link](https://github.com/DimensionalMechanics/NeoPulse-Examples.git):
