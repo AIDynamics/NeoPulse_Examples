@@ -57,7 +57,7 @@ if __name__ == '__main__':
     (located in image_directory) and produces two csv files:
         data.csv
         label_names.csv
-    where data.csv contains the full path to the image with it's class number,
+    where data.csv contains the full path to the image with its class number,
     and label_names.csv contains each label name and corresponding class number.
     The first 50000 rows are the training set and the last 10000 are the
     test set.'''

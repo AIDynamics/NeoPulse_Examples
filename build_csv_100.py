@@ -22,7 +22,7 @@ def unpickle(file_name):
 
 def convert_images(raw):
     """
-    Convert images from the CIFAR-10 format and return a 4-dim array with
+    Convert images from the CIFAR-100 format and return a 4-dim array with
     shape: [number_of_images_per_batch, height, width, channel]
     The pixel values are integers between 0 and 255.
     There are 10000, 32x32 3 channel images per batch, in row major order.
@@ -52,12 +52,12 @@ if __name__ == '__main__':
     usage = '''
     python %prog batch_directory image_directory
 
-    This program decodes the python version of the cifar-10 dataset
+    This program decodes the python version of the cifar-100 dataset
     (located in batch_directory) into .jpg files
     (located in image_directory) and produces two csv files:
         data.csv
         label_names.csv
-    where data.csv contains the full path to the image with it's class number,
+    where data.csv contains the full path to the image with its class number,
     and label_names.csv contains each label name and corresponding class number.
     The first 50000 rows are the training set and the last 10000 are the
     test set.'''

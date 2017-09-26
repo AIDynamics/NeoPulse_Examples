@@ -1,5 +1,5 @@
 # Introduction
-This is a tutorial for CIFAR-10, CIFAR-100, and MNIST in [NeoPulse™ AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
+This is a tutorial image classification using CIFAR-10, CIFAR-100, and MNIST in [NeoPulse™ AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
 
 [CIFAR-10](http://www.cs.toronto.edu/~kriz/cifar.html), an image classification dataset contains 60000 32X32 color images with 6000 images per class. There are 50000 training images and 10000 test images.
 
@@ -8,12 +8,12 @@ This is a tutorial for CIFAR-10, CIFAR-100, and MNIST in [NeoPulse™ AI Studio]
 [MNIST](yann.lecun.com/exdb/mnist/) is a database of handwritten digits often used for pattern recognition. The dataset contains 60000 28X28 greyscale images. 50000 training images and 10000 test images are included.
 
 # Tutorial Videos
-Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/developer)
+Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)
 
 # Tutorial Files
-The following NeoPulse™ Modeling Language (NML) scripts can be used to train the CIFAR-10 and CIFAR-100 datasets in NeoPulse™ AI Studio. Each file demonstrates a different level of direct hints in building a model architecture (more details on [direct hints](https://docs.neopulse.ai/NML-Oracle-direct/)):
+The following NeoPulse™ Modeling Language (NML) scripts can be used to train CIFAR-10, CIFAR-100, and MNIST datasets in NeoPulse™ AI Studio. Each file demonstrates a different level of direct hints in building a model architecture (more details on [direct hints](https://docs.neopulse.ai/NML-Oracle-direct/)):
 
-**build_csv.py:** This program extracts and writes images and labels to CSV file, saves images  
+**build_csv.py:** This program extracts data, writes images and labels to CSV file, and saves images to disk.  
 
 **cifar10_full_auto.nml:** Demonstrates using [full auto architecture](https://docs.neopulse.ai/NML-architecture/)
 

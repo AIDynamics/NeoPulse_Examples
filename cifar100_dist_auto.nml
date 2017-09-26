@@ -1,7 +1,7 @@
 oracle("generated") = 4
 
 source:
-    bind = "/DM-Dash/domtest/upload/cifar100_data.csv" ;
+    bind = "/DM-Dash/path/to/data.csv" ;
     input:
         x ~ from "Image"
             -> image: [shape=[32, 32], channels=3]
