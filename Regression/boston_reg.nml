@@ -1,0 +1,25 @@
+oracle("mode") = "classification"
+oracle("generated") = 4
+
+source:
+    bind = "/DM-Dash/domtest/Neopulse_Examples/housing.csv" ;
+    input: x ~ from "RM" -> flat: [1] -> FlatDataGenerator: [] ;
+    output: y ~ from "MEDV" -> flat: [1] -> FlatDataGenerator: [] ;
+    params:
+        validation_split = 0.2 ,
+        batch_size = 10 ;
+
+architecture:
+    input:  x ~ flat: [1] ;
+    output: y ~ flat: [1] ;
+
+    x -> auto-> y ;
+
+train:
+    compile:
+        optimizer = 'adam' ,
+        loss = 'mean_squared_error' ,
+        metrics = ['accuracy'] ;
+    run:
+        epochs = 4 ;
+    dashboard: ;
