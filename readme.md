@@ -29,6 +29,6 @@ CIFAR-100 and MNIST files follow the exact format as the files above.
 Files in this repository are easily accessible by [cloning this link](https://github.com/DimensionalMechanics/NeoPulse-Examples.git):
 
 # License
-Tutorial materials are published under DimensionalMechanics™ license. See license for commercial, academic, and personal usage.
+Tutorial materials are published under the MIT license. See license for commercial, academic, and personal use.
 
 You are welcome to modify these tutorial files. If citing please link to this repository.
