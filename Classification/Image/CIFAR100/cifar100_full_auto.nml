@@ -1,4 +1,4 @@
-oracle("generated") = 4
+oracle("mode") = "classification"
 
 source:
     bind = "/DM-Dash/path/to/data.csv" ;
@@ -11,8 +11,7 @@ source:
             -> flat: [100]
             -> FlatDataGenerator: [] ;
     params:
-        batch_size= 32 ,
-        number_validation= 10000 ;
+        batch_size= 32 ;
 
 
 architecture:

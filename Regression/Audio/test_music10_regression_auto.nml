@@ -1,0 +1,38 @@
+oracle("mode")="regression"
+oracle("hyperalgo") = "brute"
+oracle("generated_strict") = True
+oracle("generated") = 1
+oracle("complexity")=0.2
+
+architecture:
+    input: x ~ audio: [maxlen = 1366, nbands = 96];
+    output: y ~ flat: [10] ;
+
+    x -> auto
+      -> y ;
+
+
+source:
+    bind = "path/to/csv" ;
+    input:
+        x ~ from "Data"
+          -> audio: [maxlen = 1366, nbands = 96]
+          -> AudioDataGenerator: [];
+    output:
+        y ~ from "Label" -> flat: [10] -> FlatDataGenerator: [] ;
+    params:
+        batch_size = 4,
+        shuffle = True,
+        shuffle_init = True;
+
+
+train:
+    compile:
+        optimizer = Adam:[lr = 0.0001, beta_1 = 0.9, beta_2 = 0.999, epsilon = 0.00000001],
+        loss = 'categorical_crossentropy',
+        metrics = ['accuracy'] ;
+
+    run:
+        epochs = 4;
+
+    dashboard: ;

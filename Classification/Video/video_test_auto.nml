@@ -1,0 +1,33 @@
+oracle("mode")= "classification"
+
+architecture:
+    input: x ~ video: [shape=[80, 80], channels=3, seqlength=32] ;
+    output: y ~ flat: [6] ;
+
+    x ->auto-> y;
+
+
+
+
+source:
+  bind = "path/to/csv" ;
+  input:
+    img ~ from "Data"
+            -> video: [shape=[80, 80], channels=3, seqlength=32]
+            -> ImageDataGenerator: [];
+  output:
+    answer ~ from "Label" -> flat: [6] -> FlatDataGenerator: [] ;
+  params:
+    batch_size=2;
+
+
+train:
+  compile:
+    optimizer= auto,
+    loss=auto,
+    metrics=['accuracy'] ;
+
+  run:
+    epochs=4;
+
+  dashboard: ;

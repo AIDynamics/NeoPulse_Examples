@@ -1,5 +1,4 @@
 oracle("mode") = "classification"
-oracle("generated") = 4
 
 source:
     bind = "/DM-Dash/path/to/data.csv" ;
@@ -12,8 +11,7 @@ source:
             -> flat: [10]
             -> FlatDataGenerator: [] ;
     params:
-        batch_size=32 ,
-        number_validation=10000 ;
+        batch_size=32;
 
 architecture:
     input:  x ~ image: [shape=[28, 28], channels=1] ;
@@ -24,7 +22,7 @@ architecture:
 train:
     compile:
         optimizer = auto,
-        loss = 'binary_crossentropy',
+        loss = auto,
         metrics = ['accuracy'] ;
     run:
         epochs = 4 ;

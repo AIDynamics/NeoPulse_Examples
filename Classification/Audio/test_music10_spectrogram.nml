@@ -1,0 +1,68 @@
+architecture:
+    input: x ~ audio: [maxlen = 1366, nbands = 96];
+    output: y ~ flat: [10] ;
+
+    x -> Reshape: [[1366,96,1]]
+
+      -> Conv2D: [128, [3,3], padding = "same"]
+      -> BatchNormalization:[]
+      -> Activation: ['relu']
+      -> MaxPooling2D: [[4,2], strides = [4,2]]
+      -> Dropout: [0.5]
+
+      -> Conv2D: [256, [3,3], padding = "same"]
+      -> BatchNormalization:[]
+      -> Activation: ['relu']
+      -> MaxPooling2D: [[4,2], strides = [4,2]]
+      -> Dropout: [0.5]
+
+      -> Conv2D: [512, [3,3], padding = "same"]
+      -> BatchNormalization:[]
+      -> Activation: ['relu']
+      -> MaxPooling2D: [[4,2], strides = [4,2]]
+      -> Dropout: [0.5]
+
+      -> Conv2D: [1024, [3,3], padding = "same"]
+      -> BatchNormalization:[]
+      -> Activation: ['relu']
+      -> MaxPooling2D: [[5,3], strides = [5,3]]
+      -> Dropout: [0.5]
+
+      -> Conv2D: [2048, [3,3], padding = "same"]
+      -> BatchNormalization:[]
+      -> Activation: ['relu']
+      -> MaxPooling2D: [[4,4], strides = [4,4]]
+      -> Dropout: [0.5]
+
+      -> Conv2D: [1024, [1,1]]
+
+      -> Flatten: []
+      -> Dense: [10]
+      -> Activation:['softmax']
+      -> y ;
+
+
+source:
+    bind = "/path/to/csv" ;
+    input:
+        x ~ from "Data"
+          -> audio: [maxlen = 1366, nbands = 96]
+          -> AudioDataGenerator: [feature = 'spectrogram'];
+    output:
+        y ~ from "Label" -> flat: [10] -> FlatDataGenerator: [] ;
+    params:
+        batch_size = 4,
+        shuffle = True,
+        shuffle_init = True;
+
+
+train:
+    compile:
+        optimizer = Adam:[lr = 0.0001, beta_1 = 0.9, beta_2 = 0.999, epsilon = 0.00000001],
+        loss = 'categorical_crossentropy',
+        metrics = ['accuracy'] ;
+
+    run:
+        epochs = 4;
+
+    dashboard: ;

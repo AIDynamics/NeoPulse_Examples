@@ -1,0 +1,40 @@
+oracle("hyperalgo") = "brute"
+oracle("generated_strict") = True
+oracle("generated") = 4
+oracle("complexity")=0.2
+oracle("mode")="regression"
+
+architecture:
+    input: x ~ video: [shape=[60, 60], channels=3, seqlength=32] ;
+    output: y ~ flat: [1] ;
+
+    x ->auto-> y;
+
+
+
+
+source:
+  bind = "/path/to/csv" ;
+  input:
+    img ~ from "Data"
+            -> video: [shape=[60, 60], channels=3, seqlength=32]
+            -> ImageDataGenerator: [];
+  output:
+    answer ~ from "Label" -> flat: [6] -> FlatDataGenerator: [] ;
+  params:
+    batch_size=2,
+    validation_split=0.2,
+    shuffle=True,
+    shuffle_init=True;
+
+
+train:
+  compile:
+    optimizer= SGD: [lr=0.0001, momentum=0.9],
+    loss=['mean_squared_error'],
+    metrics=['mae'] ;
+
+  run:
+    epochs=4;
+
+  dashboard: ;
