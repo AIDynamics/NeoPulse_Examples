@@ -1,11 +1,7 @@
 # Introduction
 This is a repository for [NeoPulse™ AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf) sample training files.
 
-There are training examples for the following data and task types:
-
-Classification (Image, Audio, Video)
-Regression (Audio, Video)
-
+There are training examples for the following data and task types: Classification (Image, Audio, Video) and Regression (Audio, Video)
 
 Examples are added periodically.
 
