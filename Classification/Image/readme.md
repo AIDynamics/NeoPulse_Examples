@@ -16,8 +16,11 @@ For more information on using the AudioDataGenerator visit the [Data section] of
 # Tutorial Files
 
 **cifar10_full_auto.nml:** Features full use of the auto keyword to automatically generate the entire architecture.
+
 **cifar10_call_auto.nml:** Features the use of auto to automatically select an architecture later.
+
 **cifar10_choice_auto.nml:** Features use of auto keyword to automatically select from range of values for a given parameter.
+
 **cifar10_dist_auto.nml:** Features use of the auto keyword to automatically select a value from a specified distribution of values (e.g. gaussian). 
 
 CIFAR-100 and MNIST example NML code follows the same structure.
