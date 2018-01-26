@@ -19,6 +19,7 @@ For more information on using the AudioDataGenerator visit the [Data section] of
 
 **cifar10_call_auto.nml:** This classification model features the use of auto to automatically select an architecture later.
 **cifar10_choice_auto.nml:** This classification model features use of the auto keyword to automatically select from a range of values for a given parameter.
+
 **cifar10_dist_auto.nml:** This classification model features use of the auto keyword to automatically select a value from a specified distribution of values (e.g. gaussian). 
 
 CIFAR-100 and MNIST example NML code follows the same structure.
