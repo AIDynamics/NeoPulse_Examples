@@ -4,7 +4,7 @@ These sample .nml files are for training a regression model using text data in [
 **Please Note**: This sample .nml code generates a simple model which is not designed to achieve high accuracy. Using high quality, custom data will help achieve higher accuracy. 
 
 # Data
-Data for this example is from the [Portland Housing Dataset]. The dataset features 48 instances from 3 attributes.
+Data for this example is from the [Portland Housing Dataset](https://github.com/girishkuniyal/Predict-housing-prices-in-Portland). The dataset features 48 instances from 3 attributes.
 
 # Tutorial Videos and Guides
 Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)
