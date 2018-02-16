@@ -4,7 +4,7 @@ These sample .nml files are for training a classification model using flat vecto
 **Please Note**: This sample .nml code generates a simple model which is not designed to achieve high accuracy. Using high quality, custom data will help achieve higher accuracy. 
 
 # Data
-Data for this example is from the [Blood Transfusion Service Center](https://archive.ics.uci.edu/ml/datasets/Blood+Transfusion+Service+Center). The dataset features 748 instances across 5 attributes.
+Data for this example is from the [Blood Transfusion Service Center](https://archive.ics.uci.edu/ml/datasets/Blood+Transfusion+Service+Center). The dataset features 748 instances across 5 attributes. If you are unfamiliar with this file type, simply click on the filename and manually copy and paste data into a text editor of your choice. 
 
 # Tutorial Videos and Guides
 Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)
