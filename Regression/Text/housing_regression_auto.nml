@@ -1,0 +1,31 @@
+oracle("mode")="regression"
+oracle("complexity")=0.2
+
+
+architecture:
+    input: x ~ flat: [2];
+    output: y ~ flat: [1];
+
+    x -> auto -> y;
+
+source:
+    bind = 'train.csv';
+    input:
+        x ~ from 'Data' -> flat: [2] -> FlatDataGenerator: [];
+    output:
+        y ~ from 'Price' -> flat: [1] -> FlatDataGenerator: [];
+    params:
+        batch_size=4,
+        shuffle=True,
+        shuffle_init=True,
+        number_validation=7;
+
+train:
+    compile:
+        optimizer=SGD:[lr=0.01],
+        loss=['mean_squared_error'],
+        metrics=['mae'] ;
+    run:
+        nb_epoch=4 ;
+    dashboard: ;
+
