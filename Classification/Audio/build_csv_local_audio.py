@@ -7,7 +7,7 @@ import itertools
 from natsort import humansorted
 
 music_list = []
-home = "/home/dcs_2017/Documents/Examples/Classification/audio/genres/"
+home = "/path/to/data/"
 for root, dirs, files in os.walk(home, topdown=False):
     for name in files:
         music_list.append(os.path.join(root, name))
