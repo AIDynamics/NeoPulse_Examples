@@ -7,7 +7,7 @@ architecture:
     x -> auto -> y ;
 
 source:
-    bind = "path/to/csv" ;
+    bind = "home/ubuntu/csv" ;
     input:
         x ~ from "Data"
           -> audio: [maxlen = 1366, nbands = 96]
@@ -23,7 +23,7 @@ train:
     compile:
         optimizer = auto,
         loss = auto,
-        metrics = ['accuracy'] ;
+        metrics = ['mae'] ;
 
     run:
         epochs = 4;
