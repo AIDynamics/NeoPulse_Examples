@@ -1,6 +1,4 @@
 oracle("mode")="regression"
-oracle("complexity")=0.2
-
 
 architecture:
     input: x ~ flat: [2];
@@ -9,7 +7,7 @@ architecture:
     x -> auto -> y;
 
 source:
-    bind = 'train.csv';
+    bind = '/home/ubuntu/csv';
     input:
         x ~ from 'Data' -> flat: [2] -> FlatDataGenerator: [];
     output:
@@ -18,14 +16,14 @@ source:
         batch_size=4,
         shuffle=True,
         shuffle_init=True,
-        number_validation=7;
+        validation_split=0.2;
 
 train:
     compile:
-        optimizer=SGD:[lr=0.01],
-        loss=['mean_squared_error'],
+        optimizer=auto,
+        loss=auto,
         metrics=['mae'] ;
     run:
-        nb_epoch=4 ;
+        epochs=4 ;
     dashboard: ;
 
