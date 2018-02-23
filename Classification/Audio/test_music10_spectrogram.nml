@@ -41,7 +41,6 @@ architecture:
       -> Activation:['softmax']
       -> y ;
 
-
 source:
     bind = "/path/to/csv" ;
     input:
@@ -54,8 +53,7 @@ source:
         batch_size = 4,
         shuffle = True,
         shuffle_init = True;
-
-
+        
 train:
     compile:
         optimizer = Adam:[lr = 0.0001, beta_1 = 0.9, beta_2 = 0.999, epsilon = 0.00000001],
@@ -64,5 +62,4 @@ train:
 
     run:
         epochs = 4;
-
     dashboard: ;
