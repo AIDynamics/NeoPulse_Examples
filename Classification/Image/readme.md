@@ -11,9 +11,10 @@ The MNIST dataset features 60,000 handwritten digits with 10,000 reserved for te
 # Tutorial Videos and Guides
 Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)
 
-For more information on using the AudioDataGenerator visit the [Data section] of the NeoPulse™ AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
+For more information on using the ImageDataGenerator visit the [Data section] of the NeoPulse™ AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
 
 # Tutorial Files
+**build_csv_10.py:** Script creates list of training files and writes training full image paths and corresponding labels to a training CSV file.
 
 **cifar10_full_auto.nml:** Features full use of the auto keyword to automatically generate the entire architecture.
 
