@@ -1,7 +1,3 @@
-oracle("hyperalgo") = "brute"
-oracle("generated_strict") = True
-oracle("generated") = 4
-oracle("complexity")=0.2
 oracle("mode")="regression"
 
 architecture:
@@ -10,11 +6,8 @@ architecture:
 
     x ->auto-> y;
 
-
-
-
 source:
-  bind = "/path/to/csv" ;
+  bind = "/home/ubuntu/csv" ;
   input:
     img ~ from "Data"
             -> video: [shape=[60, 60], channels=3, seqlength=32]
@@ -30,8 +23,8 @@ source:
 
 train:
   compile:
-    optimizer= SGD: [lr=0.0001, momentum=0.9],
-    loss=['mean_squared_error'],
+    optimizer= auto,
+    loss=auto,
     metrics=['mae'] ;
 
   run:
