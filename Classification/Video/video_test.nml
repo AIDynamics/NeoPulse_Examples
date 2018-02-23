@@ -23,9 +23,6 @@ architecture:
       -> Dense: [1, activation='softmax']
       -> y;
 
-
-
-
 source:
   bind = "/path/to/csv" ;
   input:
