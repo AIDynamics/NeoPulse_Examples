@@ -7,7 +7,7 @@ architecture:
     x ->auto-> y;
 
 source:
-  bind = "/home/ubuntu/csv" ;
+  bind = "/home/ubuntu/data.csv" ;
   input:
     img ~ from "Data"
             -> video: [shape=[60, 60], channels=3, seqlength=32]
