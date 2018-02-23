@@ -7,7 +7,7 @@ architecture:
     x -> auto -> y;
 
 source:
-    bind = '/home/ubuntu/csv';
+    bind = '/home/ubuntu/data.csv';
     input:
         x ~ from 'Data' -> flat: [2] -> FlatDataGenerator: [];
     output:
