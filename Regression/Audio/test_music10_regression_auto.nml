@@ -1,16 +1,10 @@
 oracle("mode")="regression"
-oracle("hyperalgo") = "brute"
-oracle("generated_strict") = True
-oracle("generated") = 1
-oracle("complexity")=0.2
 
 architecture:
     input: x ~ audio: [maxlen = 1366, nbands = 96];
     output: y ~ flat: [10] ;
 
-    x -> auto
-      -> y ;
-
+    x -> auto -> y ;
 
 source:
     bind = "path/to/csv" ;
@@ -24,12 +18,11 @@ source:
         batch_size = 4,
         shuffle = True,
         shuffle_init = True;
-
-
+        
 train:
     compile:
-        optimizer = Adam:[lr = 0.0001, beta_1 = 0.9, beta_2 = 0.999, epsilon = 0.00000001],
-        loss = 'categorical_crossentropy',
+        optimizer = auto,
+        loss = auto,
         metrics = ['accuracy'] ;
 
     run:
