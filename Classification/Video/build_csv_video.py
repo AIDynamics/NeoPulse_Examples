@@ -21,20 +21,14 @@ def csv_labels(data_list, labels):  # assumes equal number of data items per lab
 
 
 # video
-path = "/home/dcs_2017/Documents/Examples/Classification/video/humanactions/"
-new_path = '/DM-Dash/domtest/classification/'
+path = "/path/to/videos/"
+new_path = '/path/'
 # labels = ['boxing', 'handclapping', 'handwaving',
 #           'jogging', 'running', 'walking']
 labels = ['0', '1', '2', '3', '4', '5']
-# # audio
-# path = "/home/dcs_2017/Documents/Examples/Classification/audio/genres/"
-# labels = ['0', '1', '2', '3',
-#           '4', '5', '6', '7', '8', '9']
 data = csv_data(path)
 
-data = [d.replace(
-    '/home/dcs_2017/Documents/Examples/Classification/', new_path) for d in data]
-csv_dataset = csv_labels(data, labels)[1]
+csv_dataset = csv_labels(data, labels)
 
 count = 1
 with open('video_data.csv', 'w') as of:
