@@ -4,9 +4,7 @@ architecture:
     input: x ~ audio: [maxlen = 1366, nbands = 96];
     output: y ~ flat: [10] ;
 
-    x -> auto
-      -> y ;
-
+    x -> auto -> y ;
 
 source:
     bind = "/path/to/csv" ;
@@ -18,8 +16,6 @@ source:
         y ~ from "Label" -> flat: [10] -> FlatDataGenerator: [] ;
     params:
         batch_size = 4,
- 
-
 
 train:
     compile:
@@ -29,6 +25,4 @@ train:
 
     run:
         epochs = 4,
-  
-
     dashboard: ;
