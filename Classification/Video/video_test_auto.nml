@@ -6,9 +6,6 @@ architecture:
 
     x ->auto-> y;
 
-
-
-
 source:
   bind = "path/to/csv" ;
   input:
@@ -19,8 +16,7 @@ source:
     answer ~ from "Label" -> flat: [6] -> FlatDataGenerator: [] ;
   params:
     batch_size=2;
-
-
+    
 train:
   compile:
     optimizer= auto,
