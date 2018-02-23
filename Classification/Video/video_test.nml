@@ -24,7 +24,7 @@ architecture:
       -> y;
 
 source:
-  bind = "/path/to/csv" ;
+  bind = "/home/ubuntu/data.csv" ;
   input:
     img ~ from "Data"
             -> video: [shape=[80, 80], channels=3, seqlength=32]
