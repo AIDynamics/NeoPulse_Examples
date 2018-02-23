@@ -1,7 +1,7 @@
-oracle("generated") = 4
+oracle("generated") = 2
 
 source:
-    bind = "/DM-Dash/path/to/data.csv" ;
+    bind = "/home/ubuntu/data.csv" ;
     input:
         x ~ from "Image"
             -> image: [shape=[32, 32], channels=3]
