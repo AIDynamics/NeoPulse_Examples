@@ -1,6 +1,8 @@
 # Introduction
 These sample .nml files are for training a classification model using image data in [NeoPulse™ AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
 
+Please Note: This sample .nml code generates a simple model which is not designed to achieve high accuracy. Using high quality, custom data will help achieve higher accuracy.
+
 # Data
 Data for these examples are from the [CIFAR 10 and 100](https://www.cs.toronto.edu/~kriz/cifar.html) and [MNIST](http://yann.lecun.com/exdb/mnist/) datasets. 
 
