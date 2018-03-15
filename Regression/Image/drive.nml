@@ -1,7 +1,7 @@
 oracle("mode") = "regression"
 oracle("generated") = 2
 source:
-    bind = "/DM-Dash/domtest/regression/image/drive_train.csv" ;
+    bind = "/home/ubuntu/data.csv" ;
     input:
         x ~ from "image"
             -> image: [shape=[32, 32], channels=3]
