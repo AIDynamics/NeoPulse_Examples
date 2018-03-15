@@ -4,7 +4,7 @@ These sample .nml files are for training a regression model using image data in 
 Please Note: This sample .nml code generates a simple model which is not designed to achieve high accuracy. Using high quality, custom data will help achieve higher accuracy.
 
 # Data
-Data for these examples are from the [DrivFace](https://archive.uci.edu/ml/datasets/DrivFace/) dataset. 
+Data for these examples are from the [DrivFace](https://archive.ics.uci.edu/ml/datasets/DrivFace/#) dataset. 
 
 The DrivFace dataset features 640x480 pixel color images across 4 drivers (2 women and 2 men) in real-life driving scenarios. The drivFace.mat file contains a normalized version of the images to 80x80 pixels each. Images can also be normalized in the nml script. 
 
