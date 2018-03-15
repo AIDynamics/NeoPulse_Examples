@@ -1,0 +1,30 @@
+oracle("mode") = "regression"
+oracle("generated") = 2
+source:
+    bind = "/DM-Dash/domtest/regression/image/drive_train.csv" ;
+    input:
+        x ~ from "image"
+            -> image: [shape=[32, 32], channels=3]
+            -> ImageDataGenerator: [rescale= 0.003921568627451];
+    output:
+        y ~ from "label"
+            -> flat: [3]
+            -> FlatDataGenerator: [] ;
+    params:
+        batch_size=8 ;
+
+architecture:
+    input:  x ~ image: [shape=[32, 32], channels=3] ;
+    output: y ~ flat: [3] ;
+
+    x -> auto -> y ;
+
+train:
+    compile:
+        optimizer = auto,
+        loss = auto,
+        metrics = ['mae'] ;
+    run:
+        epochs = 64 ;
+    dashboard: ;
+
