@@ -48,6 +48,12 @@ def write_csv_file(train_images, train_labels, test_images, test_labels):
     The test images are written at the end, i.e. the last 10000 lines correspond to the test set.
     '''
 
+    mndata = MNIST('raw_data')
+    train_img, train_labels = mndata.load_training()
+    train_images = convert_images(train_img)
+    test_img, test_labels = mndata.load_testing()
+    test_images = convert_images(test_img)
+
     Path('images').mkdir(parents=True, exist_ok=True)
 
     with open('training_data.csv', 'w') as of:
@@ -64,17 +70,15 @@ def write_csv_file(train_images, train_labels, test_images, test_labels):
             of.write(str(Path(img_file).resolve()) + ',' + str(test_labels[index]) + '\n')
 
 
+def clean_up():
+    shutil.rmtree('raw_data')
+
 if __name__ == '__main__':
 
     # Download MNIST data if necessary
     download_data()
 
-    # Process the raw data
-    mndata = MNIST('raw_data')
-    train_img, train_labels = mndata.load_training()
-    train_images = convert_images(train_img)
-    test_img, test_labels = mndata.load_testing()
-    test_images = convert_images(test_img)
-
     # Write the data to PNG files, and create a csv file for NeoPulse AI Studio
     write_csv_file(train_images, train_labels, test_images, test_labels)
+
+    clean_up()
