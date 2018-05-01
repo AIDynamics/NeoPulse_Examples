@@ -1,13 +1,34 @@
-import optparse
-import os
 import pickle
+import shutil
+import tarfile
+from pathlib import Path
+
 import numpy as np
+import requests
+from imageio import imwrite
 from natsort import humansorted
-from PIL import Image
+
+
+def download_data():
+    '''
+    Check if raw CIFAR-10 data is present. If not, download data from the official site.
+    '''
+
+    Path('raw_data').mkdir(parents=True, exist_ok=True)
+
+    URL = 'https://www.cs.toronto.edu/~kriz/'
+    file_list = ['cifar-10-python.tar.gz']
+    for f in file_list:
+        if not Path('raw_data/' + f).is_file():
+            r = requests.get(URL + f, stream=True)
+            with open('raw_data/' + f, 'wb') as f_z:
+                shutil.copyfileobj(r.raw, f_z)
+
+        tarfile.open('raw_data/' + f).extractall('raw_data/')
 
 
 def listdir_fullpath(d):
-    return [os.path.join(d, f) for f in os.listdir(d)]
+    return [p for p in Path(d).iterdir() if p.is_file()]
 
 
 def unpickle(file_name):
@@ -42,55 +63,45 @@ def load_data(filename):
     # Convert the images.
     images = convert_images(raw_images)
     # Get the class-numbers for each image. Convert to numpy-array.
-    # changed 'labels' to 'fine_labels'
     labels = np.array(data[b'labels'])
     return images, labels
 
 
-if __name__ == '__main__':
+def write_data():
+    data_path = 'raw_data/cifar-10-batches-py/'
+    image_path = 'images/'
 
-    usage = '''
-    python %prog batch_directory image_directory
-
-    This program decodes the python version of the cifar-10 dataset
-    (located in batch_directory) into .jpg files
-    (located in image_directory) and produces two csv files:
-        data.csv
-        label_names.csv
-    where data.csv contains the full path to the image with its class number,
-    and label_names.csv contains each label name and corresponding class number.
-    The first 50000 rows are the training set and the last 10000 are the
-    test set.'''
-
-    parser = optparse.OptionParser(usage=usage)
-
-    (options, args) = parser.parse_args()
-    option_dict = vars(options)
-
-    data_path = os.path.abspath(args[0])
-    image_path = os.path.abspath(args[1])
-
-    if not os.path.isdir(image_path):
-        os.mkdir(image_path)
+    Path(image_path).mkdir(parents=True, exist_ok=True)
 
     file_names = humansorted(listdir_fullpath(data_path))
     data_files = file_names[1:6] + file_names[-1:]
-    # data = file_names[1:] + file_names[:1]
+    data = file_names[1:] + file_names[:1]
 
     names = unpickle(file_names[0])
 
     with open('label_names.txt', 'w') as of:
         of.write('Class,Label\n')
-        for index, label in enumerate(names[b'labels']):
+        for index, label in enumerate(names[b'label_names']):
             of.write(str(index) + ',' + str(label) + '\n')
 
-    count = 1
-    with open('data.csv', 'w') as of:
+    with open('training_data.csv', 'w') as of:
         of.write('Image,Class\n')
-        for index, file_name in enumerate(data_files):
+        for file_name in data_files:
+            count = 0
             image_list, labels = load_data(file_name)
             for ind, image in enumerate(image_list):
-                file_path = os.path.join(image_path, str(count) + '.jpg')
-                Image.fromarray(image).save(file_path)
-                of.write(file_path + ',' + str(labels[ind]) + '\n')
+                file_path = image_path + str(count) + '.png'
+                imwrite(file_path, image)
+                of.write(str(Path(file_path).resolve()) + ',' + str(labels[ind]) + '\n')
                 count += 1
+
+
+def clean_up():
+    shutil.rmtree('raw_data')
+
+if __name__ == '__main__':
+
+    # Download data if necessary
+    download_data()
+    write_data()
+    clean_up()

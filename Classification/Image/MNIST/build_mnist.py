@@ -16,11 +16,11 @@ def download_data():
 
     Path('raw_data').mkdir(parents=True, exist_ok=True)
 
-    MNIST_URL = 'http://yann.lecun.com/exdb/mnist/'
+    URL = 'http://yann.lecun.com/exdb/mnist/'
     file_list = ['train-images-idx3-ubyte.gz', 'train-labels-idx1-ubyte.gz', 't10k-images-idx3-ubyte.gz', 't10k-labels-idx1-ubyte.gz']
     for f in file_list:
         if not Path('raw_data/' + f.replace('.gz', '')).is_file():
-            r = requests.get(MNIST_URL + f, stream=True)
+            r = requests.get(URL + f, stream=True)
             with open('raw_data/' + f, 'wb') as f_z:
                 shutil.copyfileobj(r.raw, f_z)
             with gzip.open('raw_data/' + f, 'rb') as f_z:
