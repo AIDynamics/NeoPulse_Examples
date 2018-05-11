@@ -6,6 +6,7 @@ from pathlib import Path
 import numpy as np
 import requests
 from imageio import imwrite
+
 from mnist import MNIST
 
 
@@ -73,12 +74,11 @@ def write_csv_file(train_images, train_labels, test_images, test_labels):
 def clean_up():
     shutil.rmtree('raw_data')
 
+
 if __name__ == '__main__':
 
-    # Download MNIST data if necessary
+    # Download data if necessary
     download_data()
 
     # Write the data to PNG files, and create a csv file for NeoPulse AI Studio
     write_csv_file(train_images, train_labels, test_images, test_labels)
-
-    clean_up()

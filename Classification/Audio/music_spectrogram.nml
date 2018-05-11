@@ -1,3 +1,17 @@
+source:
+    bind = "/home/ubuntu/data.csv" ;
+    input:
+      x ~ from "Data"
+        -> audio: [maxlen = 1366, nbands = 96]
+        -> AudioDataGenerator: [feature = 'spectrogram'];
+    output:
+      y ~ from "Label"
+        -> flat: [10]
+        -> FlatDataGenerator: [] ;
+    params:
+        batch_size = 4
+        validation_split = 0.2;
+
 architecture:
     input: x ~ audio: [maxlen = 1366, nbands = 96];
     output: y ~ flat: [10] ;
@@ -41,19 +55,7 @@ architecture:
       -> Activation:['softmax']
       -> y ;
 
-source:
-    bind = "/home/ubuntu/data.csv" ;
-    input:
-        x ~ from "Data"
-          -> audio: [maxlen = 1366, nbands = 96]
-          -> AudioDataGenerator: [feature = 'spectrogram'];
-    output:
-        y ~ from "Label" -> flat: [10] -> FlatDataGenerator: [] ;
-    params:
-        batch_size = 4,
-        shuffle = True,
-        shuffle_init = True;
-        
+
 train:
     compile:
         optimizer = Adam:[lr = 0.0001, beta_1 = 0.9, beta_2 = 0.999, epsilon = 0.00000001],
@@ -61,5 +63,5 @@ train:
         metrics = ['accuracy'] ;
 
     run:
-        epochs = 4;
+        epochs = 4 ;
     dashboard: ;

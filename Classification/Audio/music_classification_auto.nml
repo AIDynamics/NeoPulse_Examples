@@ -1,0 +1,30 @@
+oracle("mode")="classification"
+
+source:
+    bind = "/DM-Dash/NeoPulse_Examples/Classification/Audio/training_data.csv" ;
+    input:
+      x ~ from "Audio File"
+        -> audio: [maxlen = 1366, nbands = 96]
+        -> AudioDataGenerator: [];
+    output:
+      y ~ from "Genre"
+        -> flat: [10]
+        -> FlatDataGenerator: [] ;
+    params:
+      batch_size = 4,
+      validation_split = 0.2 ;
+
+architecture:
+    input: x ~ audio: [maxlen = 1366, nbands = 96];
+    output: y ~ flat: [10] ;
+
+    x -> auto -> y ;
+
+train:
+    compile:
+        optimizer = auto,
+        loss = auto,
+        metrics = ['accuracy'] ;
+    run:
+        epochs = 4 ;
+    dashboard: ;

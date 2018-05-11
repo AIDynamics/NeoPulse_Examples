@@ -94,12 +94,9 @@ def write_data():
                 count += 1
 
 
-def clean_up():
-    shutil.rmtree('raw_data')
-
 if __name__ == '__main__':
 
     # Download data if necessary
     download_data()
+    # Write the data to PNG files, and create a csv file for NeoPulse AI Studio
     write_data()
-    clean_up()
