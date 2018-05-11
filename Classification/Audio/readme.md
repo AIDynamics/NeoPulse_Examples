@@ -25,6 +25,8 @@ The paths in the NML scripts in this directory assume that you have cloned this 
 bind = "/DM-Dash/NeoPulse_Examples/Classification/Audio/training_data.csv" ;
 ```
 
+<b>NOTE: Audio files are big -> be careful with your batch size, or you may get OOM errors. If that happens, reduce the batch size to fit everything in memory on the GPU.</b>
+
 # Tutorial Videos and Guides
 Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)
 For more information on using the AudioDataGenerator visit the [Data section] of the NeoPulse™ AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
