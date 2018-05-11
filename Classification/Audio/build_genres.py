@@ -46,7 +46,7 @@ def write_file(validation_split):
         # Construct lines for the csv file in the form:
         # /path/to/audio/file.au,class_number
         # where class_number is the index of each genre class.
-        csv_lines = humansorted(['/DM-Dash/Neopulse_Examples/Classification/Audio/' + str(p) + ',' + str(index) + '\n' for p in Path(d).iterdir()])
+        csv_lines = humansorted(['/DM-Dash/NeoPulse_Examples/Classification/Audio/' + str(p) + ',' + str(index) + '\n' for p in Path(d).iterdir()])
         # shuffle the list:
         shuffle(csv_lines)
         # calculate the index on which to split the list into training/validation
