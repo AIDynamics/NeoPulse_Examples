@@ -1,11 +1,11 @@
 source:
     bind = "/DM-Dash/NeoPulse_Examples/Classification/Audio/training_data.csv" ;
     input:
-      x ~ from "Data"
+    x ~ from "Audio File"
         -> audio: [maxlen = 1366, nbands = 96]
         -> AudioDataGenerator: [feature = 'spectrogram'];
     output:
-      y ~ from "Label"
+      y ~ from "Genre"
         -> flat: [10]
         -> FlatDataGenerator: [] ;
     params:
