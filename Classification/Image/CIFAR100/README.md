@@ -9,7 +9,7 @@ To run this example, first you will need to download and pre-process the raw dat
 $ python build_csv_100.py
 ```
 
-If the script failes, make sure that you have installed all the package dependencies of this script which are listed at the top of the script:
+If the script fails, make sure that you have installed all the package dependencies of this script which are listed at the top of the script:
 `tarfile, shutil, pathlib, numpy, requests, imageio, and natsort`. Missing packages can be installed using pip:
 
 ```bash
@@ -25,6 +25,17 @@ the /DM-Dash directory of your machine. If you have put it somewhere else, you'l
 ```bash
 bind = "/DM-Dash/NeoPulse_Examples/Classification/Image/CIFAR100/training_data.csv" ;
 ```
+
+# Tutorial Files
+**build_csv_100.py:** Script creates list of training files and writes training full image paths and corresponding labels to a training CSV file.
+
+**cifar100_full_auto.nml:** Features full use of the auto keyword to automatically generate the entire architecture.
+
+**cifar100_call_auto.nml:** Features the use of auto to automatically select an architecture later.
+
+**cifar100_choice_auto.nml:** Features use of auto keyword to automatically select from range of values for a given parameter.
+
+**cifar100_dist_auto.nml:** Features use of the auto keyword to automatically select a value from a specified distribution of values (e.g. gaussian).
 
 # Tutorial Videos and Guides
 Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)

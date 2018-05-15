@@ -9,7 +9,7 @@ To run this example, first you will need to download and pre-process the raw dat
 $ python build_csv_100.py
 ```
 
-If the script failes, make sure that you have installed all the package dependencies of this script which are listed at the top of the script:
+If the script fails, make sure that you have installed all the package dependencies of this script which are listed at the top of the script:
 `tarfile, shutil, pathlib, numpy, requests, imageio, and natsort`. Missing packages can be installed using pip:
 
 ```bash
