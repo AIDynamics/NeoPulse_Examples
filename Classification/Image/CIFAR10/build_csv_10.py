@@ -86,8 +86,8 @@ def write_data():
 
     with open('training_data.csv', 'w') as of:
         of.write('Image,Class\n')
+        count = 0
         for file_name in data_files:
-            count = 0
             image_list, labels = load_data(file_name)
             for ind, image in enumerate(image_list):
                 file_path = image_path + str(count) + '.png'
