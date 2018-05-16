@@ -22,17 +22,17 @@ architecture:
     -> Conv2D: [32, [3,3]]
     -> Activation: ['relu']
     -> MaxPooling2D: [pool_size=2]
-    -> Dropout: [auto]
+    -> Dropout: auto
     -> Conv2D: [64, [3,3]]
     -> Activation: ['relu']
     -> Conv2D: [64, [3,3]]
     -> Activation: ['relu']
     -> MaxPooling2D: [pool_size=2]
-    -> Dropout: [auto]
+    -> Dropout: auto
     -> Flatten: []
     -> Dense: [512]
     -> Activation: ['relu']
-    -> Dropout: [auto]
+    -> Dropout: auto
     -> Dense: [10]
     -> Activation: ['softmax']
     -> y ;
