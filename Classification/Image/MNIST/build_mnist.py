@@ -6,7 +6,6 @@ from pathlib import Path
 import numpy as np
 import requests
 from imageio import imwrite
-
 from mnist import MNIST
 
 
@@ -41,7 +40,7 @@ def convert_images(raw):
     return np.reshape(np.array(raw), (-1, 28, 28, 1)).astype('uint8')
 
 
-def write_csv_file(train_images, train_labels, test_images, test_labels):
+def write_csv_file():
     '''
     Save images as PNG files (lossless).
     Write absolute path to image files and class label to training_data.csv
@@ -81,4 +80,4 @@ if __name__ == '__main__':
     download_data()
 
     # Write the data to PNG files, and create a csv file for NeoPulse AI Studio
-    write_csv_file(train_images, train_labels, test_images, test_labels)
+    write_csv_file()
