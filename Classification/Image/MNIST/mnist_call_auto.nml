@@ -1,4 +1,4 @@
-oracle("generated") = 4
+oracle("mode") = "classification"
 
 source:
   bind = "/DM-Dash/NeoPulse_Examples/Classification/Image/MNIST/training_data.csv" ;
