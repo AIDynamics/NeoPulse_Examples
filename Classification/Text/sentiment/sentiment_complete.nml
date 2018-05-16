@@ -1,0 +1,37 @@
+oracle("generated") = 1
+oracle("generated_strict") = True
+
+source:
+    bind = "/DM-Dash/dsl/sentiment/data.csv" ;
+    input:
+        x ~ from "Review"
+            -> text: [100]
+            -> TextDataGenerator: [nb_words=20000] ;
+    output:
+        y ~ from "Label"
+          -> flat: [2]
+          -> FlatDataGenerator: [] ;
+    params:
+        batch_size = 64 ;
+
+architecture:
+    input:  x ~ text: [100] ;
+    output: y ~ flat: [2] ;
+
+    x   -> Embedding: [20000, 128]
+        -> Dropout: [0.25]
+        -> Convolution1D: [64, 4]
+        -> MaxPooling1D: [pool_size=4]
+        -> LSTM: [128]
+        -> Dense: [2, activation='softmax']
+        -> y ;
+
+train:
+    compile:
+        optimizer = 'rmsprop',
+        loss = 'binary_crossentropy',
+        metrics = ['accuracy'] ;
+    run:
+        epochs = 8 ;
+
+    dashboard: ;
