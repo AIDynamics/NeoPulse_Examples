@@ -1,4 +1,4 @@
-oracle("generated") = 2
+oracle("mode") = "classification"
 
 source:
   bind = "/DM-Dash/NeoPulse_Examples/Classification/Image/CIFAR10/training_data.csv" ;

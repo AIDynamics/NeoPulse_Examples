@@ -1,4 +1,4 @@
-oracle("generated") = 2
+oracle("mode") = "classification"
 
 source:
   bind = "/DM-Dash/NeoPulse_Examples/Classification/Image/CIFAR100/training_data.csv" ;
@@ -7,7 +7,8 @@ source:
       -> image: [shape=[32, 32], channels=3]
       -> ImageDataGenerator: [rescale= 0.003921568627451];
   output:
-    y ~ from "Class"-> flat: [100]
+    y ~ from "Class"
+      -> flat: [100]
       -> FlatDataGenerator: [] ;
   params:
     number_validation = 10000,
@@ -22,17 +23,17 @@ architecture:
     -> Conv2D: [32, [3,3]]
     -> Activation: ['relu']
     -> MaxPooling2D: [pool_size=3]
-    -> Dropout: [auto]
+    -> Dropout: auto
     -> Conv2D: [64, [3,3]]
     -> Activation: ['relu']
     -> Conv2D: [64, [3,3]]
     -> Activation: ['relu']
     -> MaxPooling2D: [pool_size=3]
-    -> Dropout: [auto]
+    -> Dropout: auto
     -> Flatten: []
     -> Dense: [512]
     -> Activation: ['relu']
-    -> Dropout: [auto]
+    -> Dropout: auto
     -> Dense: [100]
     -> Activation: ['softmax']
     -> y ;
