@@ -27,8 +27,8 @@ def download_data():
         tarfile.open('raw_data/' + f).extractall('raw_data/')
 
 
-def listdir_fullpath(d):
-    return [p for p in Path(d).iterdir() if p.is_file()]
+def listdir_files(d):
+    return [str(p) for p in Path(d).iterdir() if p.is_file()]
 
 
 def unpickle(file_name):
@@ -73,7 +73,7 @@ def write_data():
 
     Path(image_path).mkdir(parents=True, exist_ok=True)
 
-    file_names = humansorted(listdir_fullpath(data_path))
+    file_names = humansorted(listdir_files(data_path))
     data_files = file_names[1:6] + file_names[-1:]
     data = file_names[1:] + file_names[:1]
 

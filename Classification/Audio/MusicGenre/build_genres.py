@@ -16,7 +16,7 @@ def download_data():
         r = requests.get(URL + f, stream=True)
         with open('raw_data/' + f, 'wb') as f_z:
             shutil.copyfileobj(r.raw, f_z)
-        tarfile.open('raw_data/' + f).extractall('raw_data/')
+        tarfile.open('raw_data/' + f).extractall()
 
 
 def flatten(l):
@@ -41,19 +41,22 @@ def write_file(validation_split):
     valid = []
 
     # Sort the genres alphabetically.
-    genres = humansorted([str(p) for p in Path('raw_data/genres').iterdir()])
-    for index, d in enumerate(genres):
-        # Construct lines for the csv file in the form:
-        # /path/to/audio/file.au,class_number
-        # where class_number is the index of each genre class.
-        csv_lines = humansorted(['/DM-Dash/NeoPulse_Examples/Classification/Audio/' + str(p) + ',' + str(index) + '\n' for p in Path(d).iterdir()])
-        # shuffle the list:
-        shuffle(csv_lines)
-        # calculate the index on which to split the list into training/validation
-        # and then add to the respective lists.
-        split_index = int(validation_split * len(csv_lines))
-        train.append(csv_lines[:-split_index])
-        valid.append(csv_lines[-split_index:])
+    genres = humansorted([str(p) for p in Path('genres').iterdir()])
+    with open('label_names.txt', 'w') as of:
+        of.write('Class,Label\n')
+        for index, d in enumerate(genres):
+            of.write(str(index) + ',' + d.split('/')[-1] + '\n')
+            # Construct lines for the csv file in the form:
+            # /path/to/audio/file.au,class_number
+            # where class_number is the index of each genre class.
+            csv_lines = humansorted(['/DM-Dash/NeoPulse_Examples/Classification/Audio/' + str(p) + ',' + str(index) + '\n' for p in Path(d).iterdir()])
+            # shuffle the list:
+            shuffle(csv_lines)
+            # calculate the index on which to split the list into training/validation
+            # and then add to the respective lists.
+            split_index = int(validation_split * len(csv_lines))
+            train.append(csv_lines[:-split_index])
+            valid.append(csv_lines[-split_index:])
 
     # Flatten and shuffle the resulting lists.
     train = flatten(train)
