@@ -32,30 +32,30 @@ def listdir_files(d):
 
 
 def unpickle(file_name):
-    """
+    '''
     Unpickle the given file and return the data.
-    """
+    '''
     with open(file_name, mode='rb') as f:
         data = pickle.load(f, encoding='bytes')
     return data
 
 
 def convert_images(raw):
-    """
+    '''
     Convert images from the CIFAR-10 format and return a 4-dim array with
     shape: [number_of_images_per_batch, height, width, channel]
     The pixel values are integers between 0 and 255.
     There are 10000, 32x32 3 channel images per batch, in row major order.
-    """
+    '''
     return np.reshape(np.array(raw), (10000, 32, 32, 3), order='F')
 
 
 def load_data(filename):
-    """
+    '''
     Load a pickled data-file from the CIFAR-10 data-set
     and return the converted images and class-number
     for each image.
-    """
+    '''
     # Load the pickled data-file.
     data = unpickle(filename)
     # Get the raw images.
@@ -68,6 +68,12 @@ def load_data(filename):
 
 
 def write_data():
+    '''
+    Unpickle the raw data.
+    Write class index and label names.
+    Write the images to png files.
+    Write the csv file for NeoPulse AI Studio.
+    '''
     data_path = 'raw_data/cifar-10-batches-py/'
     image_path = 'images/'
 

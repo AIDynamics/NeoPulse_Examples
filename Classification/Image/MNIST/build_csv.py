@@ -1,5 +1,4 @@
 import gzip
-import os
 import shutil
 from pathlib import Path
 
@@ -26,7 +25,6 @@ def download_data():
             with gzip.open('raw_data/' + f, 'rb') as f_z:
                 with open('raw_data/' + f.replace('.gz', ''), 'wb') as f_u:
                     shutil.copyfileobj(f_z, f_u)
-            os.remove('raw_data/' + f)
 
 
 def convert_images(raw):
@@ -68,10 +66,6 @@ def write_csv_file():
             img_file = 'images/mnist_test_' + str(index) + '.png'
             imwrite(img_file, image)
             of.write(str(Path(img_file).resolve()) + ',' + str(test_labels[index]) + '\n')
-
-
-def clean_up():
-    shutil.rmtree('raw_data')
 
 
 if __name__ == '__main__':
