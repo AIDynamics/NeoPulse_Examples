@@ -1,21 +1,21 @@
 oracle("mode") = "regression"
-oracle("generated") = 2
+
 source:
-    bind = "/home/ubuntu/data.csv" ;
-    input:
-        x ~ from "image"
-            -> image: [shape=[32, 32], channels=3]
-            -> ImageDataGenerator: [rescale= 0.003921568627451];
-    output:
-        y ~ from "label"
-            -> flat: [3]
-            -> FlatDataGenerator: [] ;
-    params:
-        batch_size=8 ;
+  bind = "/DM-Dash/NeoPulse_Examples/Regression/Image/training_data.csv" ;
+  input:
+    x ~ from "Image"
+      -> image: [shape=[640, 480], channels=3]
+      -> ImageDataGenerator: [rescale= 0.003921568627451] ;
+  output:
+    y ~ from "Vector"
+      -> flat: [4]
+      -> FlatDataGenerator: [] ;
+  params:
+      batch_size = 8 ;
 
 architecture:
-    input:  x ~ image: [shape=[32, 32], channels=3] ;
-    output: y ~ flat: [3] ;
+    input:  x ~ image: [shape=[640, 480], channels=3] ;
+    output: y ~ flat: [4] ;
 
     x -> auto -> y ;
 
@@ -23,8 +23,7 @@ train:
     compile:
         optimizer = auto,
         loss = auto,
-        metrics = ['mae'] ;
+        metrics = ['mae','mse'] ;
     run:
-        epochs = 64 ;
+        epochs = 4 ;
     dashboard: ;
-

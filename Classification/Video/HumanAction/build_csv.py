@@ -1,8 +1,13 @@
+import shutil
+from pathlib import Path
+from random import shuffle
+from zipfile import ZipFile
+
+import requests
+from natsort import humansorted
+
+
 def download_data():
-    import requests
-    import shutil
-    from pathlib import Path
-    from zipfile import ZipFile
     '''
     Check if raw data is present. If not, download data from the official site.
     '''
@@ -24,13 +29,17 @@ def download_data():
 
 
 def flatten(l):
+    '''
+    Flatten a list of lists.
+    '''
     return [item for sublist in l for item in sublist]
 
 
 def build_list(data_path, validation_split):
-    from pathlib import Path
-    from natsort import humansorted
-    from random import shuffle
+    '''
+    Sample training and validation data sets, shuffle them, and return a
+    single list in order: training_data, validation_data
+    '''
     class_paths = humansorted([str(p) for p in Path(data_path).iterdir() if p.is_dir()])
 
     train = []
@@ -55,8 +64,10 @@ def build_list(data_path, validation_split):
 
 
 def write_data(validation_split):
-    from natsort import humansorted
-    from pathlib import Path
+    '''
+    Randomly sample training and validation datasets and write them to a csv file.
+    Also, write the label names and class indexes to a text file.
+    '''
     data_path = 'videos/'
 
     class_names = humansorted([str(p).split('/')[1] for p in Path(data_path).iterdir() if p.is_dir()])
