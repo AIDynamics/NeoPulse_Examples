@@ -1,12 +1,17 @@
+import shutil
+import tarfile
+from pathlib import Path
+from random import shuffle
+
+import requests
+from natsort import humansorted
+
+
 def download_data():
     '''
     Check if raw music genre data is present. If not, download data from the
     official site.
     '''
-    import requests
-    import tarfile
-    import shutil
-    from pathlib import Path
 
     Path('raw_data').mkdir(parents=True, exist_ok=True)
 
@@ -33,10 +38,6 @@ def write_file(validation_split):
        the different genres.
     3. The resulting
     '''
-    from pathlib import Path
-    from natsort import humansorted
-    from random import shuffle
-
     train = []
     valid = []
 
