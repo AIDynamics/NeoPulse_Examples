@@ -11,19 +11,20 @@ source:
       -> flat: [4]
       -> FlatDataGenerator: [] ;
   params:
-      batch_size = 8 ;
+    validation_split = 0.1,
+    batch_size = 8 ;
 
 architecture:
-    input:  x ~ image: [shape=[640, 480], channels=3] ;
-    output: y ~ flat: [4] ;
+  input:  x ~ image: [shape=[640, 480], channels=3] ;
+  output: y ~ flat: [4] ;
 
-    x -> auto -> y ;
+  x -> auto -> y ;
 
 train:
-    compile:
-        optimizer = auto,
-        loss = auto,
-        metrics = ['mae','mse'] ;
-    run:
-        epochs = 4 ;
-    dashboard: ;
+  compile:
+    optimizer = auto,
+    loss = auto,
+    metrics = ['mae','mse'] ;
+  run:
+    epochs = 4 ;
+  dashboard: ;

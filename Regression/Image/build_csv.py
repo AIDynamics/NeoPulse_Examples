@@ -1,5 +1,6 @@
 import shutil
 from pathlib import Path
+from random import shuffle
 from zipfile import ZipFile
 
 import imageio
@@ -34,6 +35,7 @@ def write_csv():
     '''
     df = pd.read_csv('raw_data/DrivFace/drivPoints.txt')
     file_list = [str(p.resolve()) for p in Path('DrivImages').iterdir()]
+    shuffle(file_list)
     with open('training_data.csv', 'w') as of:
         of.write('Image,Vector\n')
         for f in file_list:
