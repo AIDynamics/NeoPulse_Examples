@@ -7,7 +7,7 @@ source:
     input:
         x ~ from "Review"
             -> text: [200]
-            -> TextDataGenerator: [nb_words = 20000] ;
+            -> TextDataGenerator: [nb_words=20000] ;
     output:
         y ~ from "Label"
             -> flat: [2]
@@ -22,9 +22,9 @@ architecture:
     output: y ~ flat: [2] ;
 
     x -> Embedding: [20000, 128]
-      -> Dropout: [auto(0.25 ? 0.50 | name = "Drop")]
+      -> Dropout: [auto(0.25 ? 0.50 | name="Drop")]
       -> Convolution1D: [64, 4]
-      -> MaxPooling1D: [pool_size = 4]
+      -> MaxPooling1D: [pool_size=4]
       -> LSTM: [128]
       -> Dense: [2, activation='softmax'] -> y ;
 
