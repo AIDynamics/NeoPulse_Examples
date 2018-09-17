@@ -6,9 +6,12 @@ source:
     bind = "/DM-Dash/examples/sentiment/data.csv" ;
     input:
         x ~ from "Review"
-            -> text: [200] -> TextDataGenerator: [nb_words = 20000] ;
+            -> text: [200]
+            -> TextDataGenerator: [nb_words=20000] ;
     output:
-        y ~ from "Label" -> flat: [2] -> FlatDataGenerator: [] ;
+        y ~ from "Label"
+            -> flat: [2]
+            -> FlatDataGenerator: [] ;
     params:
         validation_split = 0.5,
         batch_size = 32 ;
@@ -20,7 +23,7 @@ architecture:
     x -> Embedding: [20000, 128]
       -> Dropout: auto
       -> Conv1D: auto
-      -> MaxPooling1D: [pool_size = 4]
+      -> MaxPooling1D: [pool_size=4]
       -> LSTM: [128]
       -> Dense: [2, activation='softmax']
       -> y ;
@@ -28,7 +31,7 @@ architecture:
 train:
     compile:
         optimizer = 'rmsprop',
-        loss = 'binary_crossentropy',
+        loss = 'categorical_crossentropy',
         metrics = ['accuracy'] ;
     run:
         epochs = 4 ;

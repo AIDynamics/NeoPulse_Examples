@@ -6,7 +6,7 @@ source:
     input:
         x ~ from "Review"
             -> text: [200]
-            -> TextDataGenerator: [nb_words = 20000] ;
+            -> TextDataGenerator: [nb_words=20000] ;
     output:
         y ~ from "Label"
             -> flat: [2]
