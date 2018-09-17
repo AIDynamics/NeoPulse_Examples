@@ -60,7 +60,7 @@ def build_list(data_path, validation_split):
     shuffle(train)
     shuffle(valid)
 
-    return train.append(valid)
+    return train + valid
 
 
 def write_data(validation_split):
