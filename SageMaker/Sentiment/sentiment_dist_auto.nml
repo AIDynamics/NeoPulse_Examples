@@ -14,7 +14,7 @@ source:
             -> FlatDataGenerator: [] ;
     params:
         validation_split = 0.5,
-        batch_size = 64 ;
+        batch_size = 1250 ;
 
 architecture:
     input:  x ~ text: [200] ;
