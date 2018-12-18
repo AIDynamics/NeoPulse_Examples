@@ -27,6 +27,6 @@ train:
         loss = auto,
         metrics = ['accuracy'] ;
     run:
-        epochs = 5 ;
+        epochs = 4 ;
     dashboard:
         save_on = 'val_acc' ;
