@@ -1,0 +1,43 @@
+architecture:
+    input: 
+        img ~ image: [shape = [28,28], channels = 1];
+    output:
+        label ~ flat: [10];
+
+    img 
+      -> Conv2D: [filters = 32, kernel_size = 5, strides = 2, padding = 'valid', activation = 'relu', name = 'conv1']
+      -> PrimaryCaps_Matrix: []
+      -> ConvCaps:[channels = 32, kernel_size = 3, strides = 2, routings = 3]
+      -> ConvCaps:[channels = 32, kernel_size = 3, strides = 1, routings = 3]
+      -> ClassCaps:[num_capsule = 10, routings = 3]
+      -> label;
+
+source:
+    bind = "/DM-Dash/NeoPulse_Examples/CapsuleNetworks/matrix_capsule/Image/MNIST/training_data.csv";
+    input:
+        img ~ from "image"
+          -> image: [shape = [28,28], channels = 1]
+          -> ImageDataGenerator:[rescale = 0.00392156862745098];
+    output:
+      label ~ from "label"
+          -> flat: [10]
+          -> FlatDataGenerator:[];
+    params:
+        batch_size = 64,
+        shuffle = True,
+        shuffle_init = True;
+
+train :
+    compile:
+        optimizer = Adam:[lr = 0.001],
+        loss = margin_loss,
+        metrics = ['accuracy'];
+    run:
+        nb_epoch = 5;
+    dashboard: ;
+
+
+
+
+
+
