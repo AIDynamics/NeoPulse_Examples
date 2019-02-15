@@ -4,17 +4,24 @@ These sample .nml files are for training a classification model using video data
 # Data
 Data for this example is from the [Human Actions Dataset](http://www.nada.kth.se/cvap/actions/). The dataset features 25 subjects performing 6 actions in 4 different scenarios.
 
-To run this example, first you will need to download and pre-process the raw data for the CIFAR-10 task using the included ```build_csv.py``` script:
+In order to use the build_csv.py script, you will need pip3. If you don't already have  it, you can install it using the command
+```apt install python3-pip```
+After that, you will need to install natsort. To do that, you will need to run:
+```pip3 install natsort```
+
+To run this example, first you will need to download and pre-process the raw data for the task using the included 
+```build_csv.py``` script:
 
 ```bash
-$ python build_csv.py
+$ python3 build_csv.py
 ```
+The script will not execute using Python 2.7.
 
 If the script fails, make sure that you have installed all the package dependencies of this script which are listed at the top of the script:
 `zipfile, shutil, pathlib, requests, random, and natsort`. Missing packages can be installed using pip:
 
 ```bash
-$ pip install <package_name>
+$ pip3 install <package_name>
 ```
 
 Once you've downloaded and pre-processed the data, you can start training using any of the NML scripts provided. To begin training:
