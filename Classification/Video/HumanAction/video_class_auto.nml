@@ -18,7 +18,7 @@ architecture:
     input: x ~ video: [shape=[80, 80], channels=3, seqlength=32] ;
     output: y ~ flat: [6] ;
 
-    x -> auto- > y;
+    x -> auto-> y;
 
 train:
   compile:
