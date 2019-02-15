@@ -2,18 +2,24 @@
 These sample .nml files are for training a classification model using audio data in [NeoPulse™ AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
 
 # Data
-Data for this example is from the [Music Genres Dataset](http://opihi.cs.uvic.ca/sound/genres.tar.gz). The dataset features 100 audio samples from 10 music genres.
-To run this example, first you will need to download and pre-process the raw data for the music classification task using the included ```build_genres.py``` script:
+Data for this example is from the [Music Genres Dataset](http://opihi.cs.uvic.ca/sound/genres.tar.gz). The dataset features 100 audio samples from 10 music genres.In order to use the build_csv.py script, you will need pip3. If you don't already have  it, you can install it using the command
+```apt install python3-pip```
+After that, you will need to install natsort. To do that, you will need to run:
+```pip3 install natsort```
+
+To run this example, first you will need to download and pre-process the raw data for the task using the included 
+```build_csv.py``` script:
 
 ```bash
-$ python build_genres.py
+$ python3 build_csv.py
 ```
+The script will not execute using Python 2.7.
 
 If the script failes, make sure that you have installed all the package dependencies of this script which are listed at the top of the script:
 `tarfile, shutil, pathlib, requests, natsort, and random`. Missing packages can be installed using pip:
 
 ```bash
-$ pip install <package_name>
+$ pip3 install <package_name>
 ```
 
 Once you've downloaded and pre-processed the data, you can start training using any of the NML scripts provided. To begin training:
