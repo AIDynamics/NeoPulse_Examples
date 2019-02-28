@@ -4,6 +4,8 @@ These sample .nml files are for training a Single Shot MultiBox Detector model u
 # Model Structure
 The SSD model structure uses VGG-16 as base model. As shown in figure 1, it takes conv4_3, fc7, conv6_2, conv7_2, conv8_2, and conv9_2 feature layers to predict both location and class confidences. 
 
+## Fig.1 SSD model with VGG-16 as base. Feature Layer conv4_3, fc7, conv6_2, conv7_2, conv8_2 and conv9_2 are used to predict location and confidence.
+
 ![Fig. 1: SSD model with VGG-16 as base. Feature Layer conv4_3, fc7, conv6_2, conv7_2, conv8_2 and conv9_2 are used to predict location and confidence.](../../../assets/Picture1.png "Fig. 1: SSD model with VGG-16 as base. Feature Layer conv4_3, fc7, conv6_2, conv7_2, conv8_2 and conv9_2 are used to predict location and confidence.")
 
 In predicting process, each feature layer is feed into RPN(Regional Proposal Network) to predict class confidence and location coordinates. 
