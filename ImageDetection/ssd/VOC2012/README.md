@@ -16,6 +16,7 @@ In predicting process, each feature layer is feed into RPN(Regional Proposal Net
  A set of Anchor Boxes are predefined for each feature layer. Each point in feature map is defined as anchor point. 4 or 6 different default boxes(different ratios and scales) are defined around each anchor point. Classes and location coordinates are predicted based on each anchor box. 
 
 ![Fig. 3](../../../assets/Picture3.png "Fig. 3: 4 different default boxes are defind around one anchor point")
+
 **Fig. 3: 4 different default boxes are defind around one anchor point**
 
 For example, conv6-2 RPN is defined as below in .nml:
