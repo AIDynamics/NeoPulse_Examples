@@ -94,6 +94,11 @@ In the end, all class and box prediction results across all feature layers need 
 
 ```
 
+
+## Loss
+Neopulse support 3 types of loss for Image Detection, SSD loss, Yolo loss, and Focal loss. Users do not need to declare any type of loss. The according loss will be automatically set when users declare typical oracle mode at the beginning of .nml file.
+
+
 # Data
 The data for this task can be found at: http://host.robots.ox.ac.uk/pascal/VOC/voc2012/
 To run this example, first you will need to download the raw data and pretrained vgg16 model for the VOC2012 task using the included ```build_csv.py``` script:
