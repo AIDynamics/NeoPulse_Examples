@@ -1,0 +1,44 @@
+architecture:
+    input: 
+        audio ~ audio: [maxlen = 1536, nbands = 24];
+    output:
+        label ~ flat: [10];
+
+    audio 
+      -> Reshape: [[1536, 24, 1]]
+      -> Conv2D: [filters = 32, kernel_size = 5, strides = 2, padding = 'valid', activation = 'relu', name = 'conv1']
+      -> PrimaryCaps_Matrix: []
+      -> ConvCaps:[channels = 32, kernel_size = 3, strides = 2, routings = 3]
+      -> ConvCaps:[channels = 32, kernel_size = 3, strides = 1, routings = 3]
+      -> ClassCaps:[num_capsule = 10, routings = 3]
+      -> label;
+
+source:
+    bind = "/DM-Dash/NeoPulse_Examples/CapsuleNetworks/matrix_capsule/Audio/training_data.csv";
+    input:
+        img ~ from "Audio"
+          -> audio: [maxlen = 1536, nbands = 24]
+          -> AudioDataGenerator: [];
+    output:
+      label ~ from "Label"
+          -> flat: [10]
+          -> FlatDataGenerator:[];
+    params:
+        batch_size = 32,
+        shuffle = True,
+        shuffle_init = True;
+
+train :
+    compile:
+        optimizer = Adam:[lr = 0.001],
+        loss = "spreadloss",
+        metrics = ['accuracy'];
+    run:
+        nb_epoch = 2;
+    dashboard: ;
+
+
+
+
+
+
