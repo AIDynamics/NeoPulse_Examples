@@ -5,16 +5,18 @@ These sample .nml files are for training a Single Shot MultiBox Detector model u
 The SSD model structure uses VGG-16 as base model. As shown in figure 1, it takes conv4_3, fc7, conv6_2, conv7_2, conv8_2, and conv9_2 feature layers to predict both location and class confidences. 
 
 
-![Fig. 1: SSD model with VGG-16 as base. Feature Layer conv4_3, fc7, conv6_2, conv7_2, conv8_2 and conv9_2 are used to predict location and confidence.](../../../assets/Picture1.png "Fig. 1: SSD model with VGG-16 as base. Feature Layer conv4_3, fc7, conv6_2, conv7_2, conv8_2 and conv9_2 are used to predict location and confidence.")
+![Fig. 1](../../../assets/Picture1.png "Fig. 1: SSD model with VGG-16 as base. Feature Layer conv4_3, fc7, conv6_2, conv7_2, conv8_2 and conv9_2 are used to predict location and confidence.")
 **Fig.1 SSD model with VGG-16 as base. Feature Layer conv4_3, fc7, conv6_2, conv7_2, conv8_2 and conv9_2 are used to predict location and confidence.**
 
 In predicting process, each feature layer is feed into RPN(Regional Proposal Network) to predict class confidence and location coordinates. 
 
-![Fig. 2: RPN structure](../../../assets/Picture2.png)
+![Fig. 2](../../../assets/Picture2.png "Fig. 2: RPN structure")
+**Fig. 2: RPN structure**
 
  A set of Anchor Boxes are predefined for each feature layer. Each point in feature map is defined as anchor point. 4 or 6 different default boxes(different ratios and scales) are defined around each anchor point. Classes and location coordinates are predicted based on each anchor box. 
 
-![Fig. 3: 4 different default boxes are defind around one anchor point](../../../assets/Picture3.png)
+![Fig. 3](../../../assets/Picture3.png "Fig. 3: 4 different default boxes are defind around one anchor point")
+**Fig. 3: 4 different default boxes are defind around one anchor point**
 
 For example, conv6-2 RPN is defined as below in .nml:
 
