@@ -18,5 +18,25 @@ For more information on using the ImageDataGenerator visit the [Data section] of
 
 **drive_auto.nml:** Features full use of the auto keyword to automatically generate the entire architecture.
 
+In order to use the build_csv.py script, you will need pip3. If you don't already have  it, you can install it using the command
+```apt install python3-pip```
+
+
+To run this example, first you will need to download and pre-process the raw data for the task using the included 
+```build_csv.py``` script:
+
+```bash
+$ python3 build_csv.py
+```
+The script will not execute using Python 2.7.
+
+If the script fails, make sure that you have installed all the package dependencies of this script which are listed at the top of the script:
+`zipfile, shutil, pathlib, requests, pandas, imageio, and random`. Missing packages can be installed using pip:
+
+```bash
+$ pip3 install <package_name>
+```
+
+
 # License
 Tutorial materials are published under the MIT license. See license for commercial, academic, and personal use.
