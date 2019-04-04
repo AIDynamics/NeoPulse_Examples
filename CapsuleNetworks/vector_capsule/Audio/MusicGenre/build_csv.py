@@ -66,13 +66,19 @@ def write_file(validation_split):
     shuffle(train)
     shuffle(valid)
 
-    # Write the CSV file.
+    # Write training the CSV file.
     with open('training_data.csv', 'w') as of:
         of.write('Audio,Label\n')
         for l in train:
             of.write(l)
         for l in valid:
             of.write(l)
+
+    # Write the querying CSV file.
+    with open('querying_data.csv', 'w') as of:
+        of.write('Audio\n')
+        for l in valid:
+            of.write(l.split(',')[0] + '\n')
 
 
 if __name__ == '__main__':

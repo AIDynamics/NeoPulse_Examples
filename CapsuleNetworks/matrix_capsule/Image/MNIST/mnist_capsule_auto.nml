@@ -28,7 +28,7 @@ train :
         loss = auto,
         metrics = ['accuracy'];
     run:
-        nb_epoch = 5;
+        epochs = 5;
     dashboard: ;
 
 

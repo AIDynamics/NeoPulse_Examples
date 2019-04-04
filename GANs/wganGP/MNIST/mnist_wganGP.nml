@@ -66,4 +66,4 @@ architecture name:discriminator:
 train: 
     compile: optimizer = Adam: [0.0001, beta_1 = 0.5, beta_2 = 0.9];
     run:
-        nb_epoch = 2;
+        epochs = 2;

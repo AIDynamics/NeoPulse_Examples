@@ -54,4 +54,4 @@ train :
         optimizer = Adam: [lr = 0.0005],
         loss = 'binary_crossentropy';
     run:
-        nb_epoch = 10;
+        epochs = 10;

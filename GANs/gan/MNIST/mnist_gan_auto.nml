@@ -41,4 +41,4 @@ train :
         optimizer = auto,
         loss = auto;
     run:
-        nb_epoch = 10;
+        epochs = 10;

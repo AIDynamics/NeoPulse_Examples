@@ -90,6 +90,7 @@ def write_data():
         for index, label in enumerate(names[b'label_names']):
             of.write(str(index) + ',' + str(label) + '\n')
 
+    # write training csv
     with open('training_data.csv', 'w') as of:
         of.write('Image,Class\n')
         count = 0
@@ -101,6 +102,17 @@ def write_data():
                 of.write(str(Path(file_path).resolve()) + ',' + str(labels[ind]) + '\n')
                 count += 1
 
+    # write querying csv
+    with open('querying_data.csv', 'w') as of:
+        of.write('Image\n')
+        count = 0
+        for file_name in data_files:
+            image_list, labels = load_data(file_name)
+            for ind, image in enumerate(image_list):
+                file_path = image_path + str(count) + '.png'
+                imwrite(file_path, image)
+                of.write(str(Path(file_path).resolve()) + '\n')
+                count += 1
 
 if __name__ == '__main__':
 

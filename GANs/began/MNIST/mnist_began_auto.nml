@@ -37,6 +37,6 @@ train :
         optimizer = auto,
         loss = auto;
     run:
-        nb_epoch = 2;
+        epochs = 2;
     dashboard: ;
         

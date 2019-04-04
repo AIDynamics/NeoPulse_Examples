@@ -2,7 +2,7 @@ oracle("mode") = "classification"
 oracle("complexity") =  0.1
 
 source:
-    bind = "/DM-Dash/examples/sentiment/data.csv" ;
+    bind = "/DM-Dash/Neopulse_Examples/Classification/Text/Sentiment/training_data.csv" ;
     input:
         x ~ from "Review"
             -> text: [200]

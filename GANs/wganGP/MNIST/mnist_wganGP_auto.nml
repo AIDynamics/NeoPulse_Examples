@@ -36,4 +36,4 @@ architecture name:discriminator:
 train: 
     compile: optimizer = auto;
     run:
-        nb_epoch = 2;
+        epochs = 2;

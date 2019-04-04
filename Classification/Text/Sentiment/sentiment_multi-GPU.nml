@@ -3,7 +3,7 @@ oracle("complexity") =  0.1
 oracle("regularization") = 0.99
 
 source:
-    bind = "/DM-Dash/dsl/sentiment/data.csv" ;
+    bind = "/DM-Dash/Neopulse_Examples/Classification/Text/Sentiment/training_data.csv" ;
     input:
         x ~ from "Review"
             -> text: [200]

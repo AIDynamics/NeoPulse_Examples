@@ -54,5 +54,5 @@ train:
         loss_discriminator = 'mse',
         loss = 'mse';
     run:
-        nb_epoch = 2;
+        epochs = 2;
         

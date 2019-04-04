@@ -1,7 +1,7 @@
 oracle("mode")="classification"
 
 source:
-    bind = "/DM-Dash/NeoPulse_Examples/Classification/Audio/training_data.csv" ;
+    bind = "/DM-Dash/NeoPulse_Examples/Classification/Audio/MusicGenre/training_data.csv" ;
     input:
       x ~ from "Audio File"
         -> audio: [maxlen = 1366, nbands = 96]
