@@ -54,6 +54,7 @@ def write_csv_file():
 
     Path('images').mkdir(parents=True, exist_ok=True)
 
+    # writing training csv
     with open('training_data.csv', 'w') as of:
         of.write('image,label\n')
 
@@ -66,6 +67,16 @@ def write_csv_file():
             img_file = 'images/mnist_test_' + str(index) + '.png'
             imwrite(img_file, image)
             of.write(str(Path(img_file).resolve()) + ',' + str(test_labels[index]) + '\n')
+
+    # writing querying csv
+    with open('querying_data.csv', 'w') as of:
+        of.write('image\n')
+
+
+        for index, image in enumerate(test_images):
+            img_file = 'images/mnist_test_' + str(index) + '.png'
+            imwrite(img_file, image)
+            of.write(str(Path(img_file).resolve()) + '\n')
 
 
 if __name__ == '__main__':

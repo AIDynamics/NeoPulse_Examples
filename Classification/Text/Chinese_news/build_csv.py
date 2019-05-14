@@ -20,6 +20,7 @@ def download_data():
             shutil.copyfileobj(r.raw, f_z)
 
 
+
 if __name__ == "__main__":
 
     download_data()

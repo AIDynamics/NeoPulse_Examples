@@ -91,6 +91,6 @@ train :
         optimizer = Adam: [0.00005],
         loss = l1loss;
     run:
-        nb_epoch = 2;
+        epochs = 2;
     dashboard: ;
         

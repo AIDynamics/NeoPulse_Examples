@@ -1,7 +1,7 @@
 oracle("mode") = "matrix_capsule"
 architecture:
     input: 
-        audio ~ audio: [maxlen = 1536, nbands = 24];
+        audio ~ audio: [maxlen = 96, nbands = 24];
     output:
         label ~ flat: [10];
 
@@ -10,10 +10,10 @@ architecture:
       -> label;
 
 source:
-    bind = "/DM-Dash/NeoPulse_Examples/CapsuleNetworks/matrix_capsule/Audio/training_data.csv";
+    bind = "/DM-Dash/NeoPulse_Examples/CapsuleNetworks/matrix_capsule/Audio/MusicGenre/training_data.csv";
     input:
         img ~ from "Audio"
-          -> audio: [maxlen = 1536, nbands = 24]
+          -> audio: [maxlen = 96, nbands = 24]
           -> AudioDataGenerator: [];
     output:
       label ~ from "Label"
@@ -30,7 +30,7 @@ train :
         loss = auto,
         metrics = ['accuracy'];
     run:
-        nb_epoch = 2;
+        epochs = 2;
     dashboard: ;
 
 

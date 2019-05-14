@@ -1,7 +1,7 @@
 oracle("mode")= "classification"
 
 source:
-  bind = "/DM-Dash/NeoPulseExamples/Classification/Video/training_data.csv" ;
+  bind = "/DM-Dash/Neopulse_Examples/Classification/Video/HumanAction/training_data.csv" ;
   input:
     x ~ from "Video"
       -> video: [shape=[80, 80], channels=3, seqlength=32]
@@ -18,7 +18,7 @@ architecture:
     input: x ~ video: [shape=[80, 80], channels=3, seqlength=32] ;
     output: y ~ flat: [6] ;
 
-    x -> auto- > y;
+    x -> auto -> y;
 
 train:
   compile:

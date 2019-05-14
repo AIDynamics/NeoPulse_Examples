@@ -55,7 +55,7 @@ def write_csv_file():
     Path('images').mkdir(parents=True, exist_ok=True)
 
     with open('training_data.csv', 'w') as of:
-        of.write('Image,Noise\n')
+        of.write('image,noise\n')
 
         for index, image in enumerate(train_images):
             img_file = 'images/mnist_train_' + str(index) + '.png'

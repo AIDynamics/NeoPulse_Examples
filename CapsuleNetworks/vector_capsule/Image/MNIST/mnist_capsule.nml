@@ -32,7 +32,7 @@ train :
         loss = margin_loss,
         metrics = ['accuracy'];
     run:
-        nb_epoch = 5;
+        epochs = 5;
     dashboard: ;
 
 

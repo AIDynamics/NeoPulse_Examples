@@ -9,7 +9,7 @@ architecture:
     audio -> auto -> label;
 
 source:
-    bind = "/DM-Dash/NeoPulse_Examples/CapsuleNetworks/vector_capsule/Audio/training_data.csv";
+    bind = "/DM-Dash/NeoPulse_Examples/CapsuleNetworks/vector_capsule/Audio/MusicGenre/training_data.csv";
     input:
         img ~ from "Audio"
           -> audio: [maxlen = 1536, nbands = 24]
@@ -29,7 +29,7 @@ train:
         loss = auto,
         metrics = ['accuracy'];
     run:
-        nb_epoch = 2;
+        epochs = 2;
     dashboard: ;
 
 
