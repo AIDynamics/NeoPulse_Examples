@@ -4,6 +4,7 @@ from random import shuffle
 from zipfile import ZipFile
 
 import requests
+
 from natsort import humansorted
 
 
@@ -47,7 +48,7 @@ def build_list(data_path, validation_split):
     for c, p in enumerate(class_paths):
         line_list = []
         for f in Path(p).iterdir():
-            line_list.append(str(f.absolute()) + ',' + str(c) + '\n')
+            line_list.append(str(f) + ',' + str(c) + '\n')
 
         shuffle(line_list)
         split_index = int(validation_split * len(line_list))

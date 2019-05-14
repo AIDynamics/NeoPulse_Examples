@@ -1,0 +1,34 @@
+source:
+    bind = "training_data.csv" ;
+    input:
+        x ~ from "Image"
+            -> image: [shape = [28,28], channels = 1]
+            -> ImageDataGenerator:[rescale = 0.00392156862745098] ;
+    output:
+        y ~ from "Label"
+            -> flat: [10]
+            -> FlatDataGenerator:[] ;
+    params:
+        batch_size = 64,
+        shuffle = True,
+        shuffle_init = True ;
+
+architecture:
+    input:  x ~ image: [shape = [28,28], channels = 1] ;
+    output: y ~ flat: [10] ;
+
+    x -> Conv2D: [filters = 32, kernel_size = 5, strides = 2, padding = 'valid', activation = 'relu', name = 'conv1']
+      -> PrimaryCaps_Matrix: []
+      -> ConvCaps:[channels = 32, kernel_size = 3, strides = 2, routings = 3]
+      -> ConvCaps:[channels = 32, kernel_size = 3, strides = 1, routings = 3]
+      -> ClassCaps:[num_capsule = 10, routings = 3]
+      -> y ;
+
+train:
+    compile:
+        optimizer = Adam:[lr = 0.001],
+        loss = margin_loss,
+        metrics = ['accuracy'] ;
+    run:
+        epochs = 2 ;
+    dashboard: ;

@@ -1,48 +1,45 @@
 source:
-bind = "/DM-Dash/Neopulse_Examples/Classification/Video/HumanAction/training_data.csv" ;
-input:
-  x ~ from "Video"
-    -> video: [shape=[80, 80], channels=3, seqlength=32]
-    -> ImageDataGenerator: [];
-output:
-  y ~ from "Class"
-    -> flat: [6]
-    -> FlatDataGenerator: [] ;
-params:
-  number_validation = 119,
-  batch_size = 2;
-
+    bind = "training_data.csv" ;
+    input:
+        x ~ from "Video"
+            -> video: [shape=[80, 80], channels=3, seqlength=32]
+            -> ImageDataGenerator: [] ;
+    output:
+        y ~ from "Class"
+            -> flat: [6]
+            -> FlatDataGenerator: [] ;
+    params:
+        number_validation = 119,
+        batch_size = 2 ;
 
 architecture:
-  input: x ~ video: [shape=[80, 80], channels=3, seqlength=32] ;
-  output: y ~ flat: [6] ;
+    input:  x ~ video: [shape=[80, 80], channels=3, seqlength=32] ;
+    output: y ~ flat: [6] ;
 
-  x -> TimeDistributed: [Conv2D: [32, [3,3], kernel_initializer="he_normal", activation='relu'], input_shape=[32, 80, 80, 3]]
-    -> TimeDistributed: [Conv2D: [32, [3,3], kernel_initializer="he_normal", activation='relu']]
-    -> TimeDistributed: [MaxPooling2D: []]
-    -> TimeDistributed: [Conv2D: [48, [3,3], kernel_initializer="he_normal", activation='relu']]
-    -> TimeDistributed: [Conv2D: [48, [3,3], kernel_initializer="he_normal", activation='relu']]
-    -> TimeDistributed: [MaxPooling2D: []]
-    -> TimeDistributed: [Conv2D: [64, [3,3], kernel_initializer="he_normal", activation='relu']]
-    -> TimeDistributed: [Conv2D: [64, [3,3], kernel_initializer="he_normal", activation='relu']]
-    -> TimeDistributed: [MaxPooling2D: []]
-    -> TimeDistributed: [Conv2D: [128, [3,3], kernel_initializer="he_normal", activation='relu']]
-    -> TimeDistributed: [Conv2D: [128, [3,3], kernel_initializer="he_normal", activation='relu']]
-    -> TimeDistributed: [Flatten: []]
-    -> LSTM: [256, return_sequences=True]
-    -> Flatten:[]
-    -> Dense: [512, activation='relu']
-    -> Dropout: [0.5]
-    -> Dense: [6, activation='softmax']
-    -> y;
+    x -> TimeDistributed: [Conv2D: [32, [3,3], kernel_initializer="he_normal", activation='relu'], input_shape=[32, 80, 80, 3]]
+      -> TimeDistributed: [Conv2D: [32, [3,3], kernel_initializer="he_normal", activation='relu']]
+      -> TimeDistributed: [MaxPooling2D: []]
+      -> TimeDistributed: [Conv2D: [48, [3,3], kernel_initializer="he_normal", activation='relu']]
+      -> TimeDistributed: [Conv2D: [48, [3,3], kernel_initializer="he_normal", activation='relu']]
+      -> TimeDistributed: [MaxPooling2D: []]
+      -> TimeDistributed: [Conv2D: [64, [3,3], kernel_initializer="he_normal", activation='relu']]
+      -> TimeDistributed: [Conv2D: [64, [3,3], kernel_initializer="he_normal", activation='relu']]
+      -> TimeDistributed: [MaxPooling2D: []]
+      -> TimeDistributed: [Conv2D: [128, [3,3], kernel_initializer="he_normal", activation='relu']]
+      -> TimeDistributed: [Conv2D: [128, [3,3], kernel_initializer="he_normal", activation='relu']]
+      -> TimeDistributed: [Flatten: []]
+      -> LSTM: [256, return_sequences=True]
+      -> Flatten:[]
+      -> Dense: [512, activation='relu']
+      -> Dropout: [0.5]
+      -> Dense: [1, activation='softmax']
+      -> y;
 
 train:
-  compile:
-    optimizer = SGD: [lr=0.0001, momentum=0.9],
-    loss = 'binary_crossentropy',
-    metrics = ['accuracy'] ;
-
-  run:
-    epochs = 4;
-
-  dashboard: ;
+    compile:
+        optimizer = SGD: [lr=0.0001, momentum=0.9],
+        loss = 'binary_crossentropy',
+        metrics = ['accuracy'] ;
+    run:
+        epochs = 2 ;
+    dashboard: ;
