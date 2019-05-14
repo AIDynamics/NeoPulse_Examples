@@ -4,8 +4,9 @@ import tarfile
 from pathlib import Path
 from random import shuffle
 
-import pandas as pd
 import requests
+
+import pandas as pd
 from natsort import humansorted
 
 
@@ -22,7 +23,7 @@ def download_data():
 
     nii_f = 'IXI_T1.tar.gz'
     xls_f = 'IXI.xls'
-    
+
     if not Path('raw_data/' + nii_f).is_file():
         r = requests.get(nii_URL, stream=True)
         with open('raw_data/' + nii_f, 'wb') as f_z:
@@ -58,7 +59,7 @@ def write_file(validation_split):
         sex_id = row['SEX_ID (1=m, 2=f)']
         sex_id -= 1
         if IXI_id in pdict:
-            csv_lines.append("{0},{1}\n".format(str(cwd) + "/images/" + pdict[IXI_id], sex_id))
+            csv_lines.append("{0},{1}\n".format("images/" + pdict[IXI_id], sex_id))
 
     shuffle(csv_lines)
 
@@ -75,7 +76,6 @@ def write_file(validation_split):
         for l in valid:
             of.write(l)
 
-
     # Write the querying CSV file.
     with open('querying_data.csv', 'w') as of:
         of.write('data\n')
@@ -86,7 +86,7 @@ def write_file(validation_split):
 if __name__ == '__main__':
 
     # Download data if necessary
-    #download_data()
+    download_data()
 
     # Write files with 20% validation split
     write_file(0.2)

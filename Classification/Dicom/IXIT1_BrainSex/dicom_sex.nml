@@ -1,11 +1,24 @@
-architecture:
-    input: 
-        img ~ dicom: [shape = [64,64,64,1]];
+source:
+    bind = "training_data.csv" ;
+    input:
+        x ~ from "data"
+            -> dicom: [shape = [64, 64, 64, 1]]
+            -> DicomDataGenerator:[spacing=[2.0,2.0,2.0], normalise_zero_to_one = True, flip=True] ;
     output:
-        label ~ flat: [2];
+        y ~ from "label"
+            -> flat: [2]
+            -> FlatDataGenerator:[] ;
+    params:
+        batch_size = 8,
+        shuffle = True,
+        shuffle_init = True,
+        repeat_per_load = 10 ;
 
-    img 
-      -> Conv3D:[16, kernel_size=[3, 3, 3],strides = [2,2,2], padding = 'same',activation='relu']
+architecture:
+    input:  x ~ dicom: [shape = [64,64,64,1]] ;
+    output: y ~ flat: [2] ;
+
+    x -> Conv3D:[16, kernel_size=[3, 3, 3],strides = [2,2,2], padding = 'same',activation='relu']
       -> Conv3D:[16, kernel_size=[3, 3, 3],strides = [2,2,2], padding = 'same',activation='relu']
       -> MaxPooling3D:[pool_size=[2, 2, 2], padding = 'same']
       -> Conv3D:[32, kernel_size=[3, 3, 3], padding = 'same',activation='relu']
@@ -14,35 +27,13 @@ architecture:
       -> Flatten:[]
       -> Dense:[256, activation='relu']
       -> Dense:[2, activation='softmax']
-      -> label;
+      -> y ;
 
-source:
-    bind = "/DM-Dash/Neopulse_Examples/Classification/Dicom/IXIT1_BrainSex/training_data.csv";
-    input:
-        img ~ from "data"
-          -> dicom: [shape = [64, 64, 64, 1]]
-          -> DicomDataGenerator:[spacing=[2.0,2.0,2.0],normalise_zero_to_one = True,flip=True];
-    output:
-      label ~ from "label"
-          -> flat: [2]
-          -> FlatDataGenerator:[];
-    params:
-        batch_size = 8,
-        shuffle = True,
-        shuffle_init = True,
-        repeat_per_load=10;
-
-train :
+train:
     compile:
         optimizer = Adam:[lr = 0.0001],
         loss = categorical_crossentropy,
-        metrics = ['accuracy'];
+        metrics = ['accuracy'] ;
     run:
-        epochs = 20;
+        epochs = 2 ;
     dashboard: ;
-
-
-
-
-
-
