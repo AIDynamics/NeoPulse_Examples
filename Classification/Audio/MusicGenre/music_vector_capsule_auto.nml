@@ -1,0 +1,31 @@
+oracle("mode") = "vector_capsule"
+
+source:
+    bind = "training_data.csv" ;
+    input:
+        audio ~ from "Audio"
+                -> audio: [maxlen = 1536, nbands = 24]
+                -> AudioDataGenerator: [] ;
+    output:
+        label ~ from "Label"
+                -> flat: [10]
+                -> FlatDataGenerator:[] ;
+    params:
+        batch_size = 32,
+        shuffle = True,
+        shuffle_init = True ;
+
+architecture:
+    input:  audio ~ audio: [maxlen = 1536, nbands = 24] ;
+    output: label ~ flat: [10];
+
+    audio -> auto -> label ;
+
+train:
+    compile:
+        optimizer = Adam:[lr = 0.0001],
+        loss = margin_loss,
+        metrics = ['accuracy'] ;
+    run:
+        epochs = 2 ;
+    dashboard: ;

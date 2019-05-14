@@ -1,19 +1,19 @@
 source:
-    bind = "/DM-Dash/NeoPulse_Examples/Classification/Audio/MusicGenre/training_data.csv" ;
+    bind = "training_data.csv" ;
     input:
-    x ~ from "Audio File"
-        -> audio: [maxlen = 1366, nbands = 96]
-        -> AudioDataGenerator: [feature = 'spectrogram'];
+        x ~ from "Audio"
+            -> audio: [maxlen = 1366, nbands = 96]
+            -> AudioDataGenerator: [feature = 'spectrogram'] ;
     output:
-      y ~ from "Genre"
-        -> flat: [10]
-        -> FlatDataGenerator: [] ;
+        y ~ from "Label"
+            -> flat: [10]
+            -> FlatDataGenerator: [] ;
     params:
         batch_size = 5,
-        validation_split = 0.2;
+        validation_split = 0.2 ;
 
 architecture:
-    input: x ~ audio: [maxlen = 1366, nbands = 96];
+    input:  x ~ audio: [maxlen = 1366, nbands = 96] ;
     output: y ~ flat: [10] ;
 
     x -> Reshape: [[1366,96,1]]
@@ -61,7 +61,6 @@ train:
         optimizer = Adam:[lr = 0.0001, beta_1 = 0.9, beta_2 = 0.999, epsilon = 0.00000001],
         loss = 'categorical_crossentropy',
         metrics = ['accuracy'] ;
-
     run:
-        epochs = 4 ;
+        epochs = 2 ;
     dashboard: ;
