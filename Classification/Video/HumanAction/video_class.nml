@@ -32,7 +32,7 @@ architecture:
       -> Flatten:[]
       -> Dense: [512, activation='relu']
       -> Dropout: [0.5]
-      -> Dense: [1, activation='softmax']
+      -> Dense: [6, activation='softmax']
       -> y;
 
 train:
