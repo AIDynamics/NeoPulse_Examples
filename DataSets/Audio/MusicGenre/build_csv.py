@@ -68,7 +68,7 @@ def write_file(validation_split):
 
     # Write the CSV file.
     with open('training_data.csv', 'w') as of:
-        of.write('Audio,Genre\n')
+        of.write('Audio,Label\n')
         for l in train:
             of.write(l)
         for l in valid:
