@@ -1,7 +1,7 @@
 # Introduction
 This is a repository for [NeoPulse™ AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf) sample training files.
 
-There are training examples for the following data and task types: Classification (Image, Audio, Video) and Regression (Text, Vector, Image, Audio, Video). Examples are added periodically. You will find a classification example using text data in the /DM-Dash/examples/sentiment/ folder on your NeoPulse AI Studio instance. A brief tutorial is also available in the Tutorials & Guides section of the Developer Portal (see link below). 
+There are training examples for the following data and task types: Classification (Image, Audio, Video) and Regression (Text, Vector, Image, Audio, Video). Examples are added periodically. A brief tutorial is also available in the Tutorials & Guides section of the Developer Portal (see link below).
 
 Under each data type folder you will find sample NeoPulse™ Modeling Language (NML) code as well as information on the sample dataset used.
 
