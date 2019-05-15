@@ -28,13 +28,33 @@ bind = "/DM-Dash/NeoPulse_Examples/Classification/Image/MNIST/training_data.csv"
 # Tutorial Files
 *build_csv.py:** Script creates list of training files and writes training full image paths and corresponding labels to a training CSV file.
 
-**mnist_full_auto.nml:** Features full use of the auto keyword to automatically generate the entire architecture.
-
 **mnist_call_auto.nml:** Features the use of auto to automatically select an architecture later.
 
 **mnist_choice_auto.nml:** Features use of auto keyword to automatically select from range of values for a given parameter.
 
 **mnist_dist_auto.nml:** Features use of the auto keyword to automatically select a value from a specified distribution of values (e.g. gaussian).
+
+**mnist_full_auto.nml:** Features full use of the auto keyword to automatically generate the entire architecture.
+
+**mnist_kmeans.nml:** Demonstrates the k-means unsupervised clustering algorithm.
+
+**mnist_kmeans_batch.nml:** Demonstrates using batch processing for k-means clustering.
+
+**mnist_KmeansPCA.nml:** Demonstrates using k-means + PCA for clustering.
+
+**mnist_KmeansPCA_batch.nml:** Demonstrates batch processing for k-meanst + PCA.
+
+**mnist_matrix_capsule_auto.nml:** Demonstrates matrix capsule networks using the oracle.
+
+**mnist_matrix_capsule.nml:** Demonstrates matrix capsule networks without using the oracle.
+
+**mnist_pca.nml:** Demonstrates using Principal Component analysis (PCA).
+
+**mnist_pca_batch.nml:** Demonstrates batch processing for PCA.
+
+**mnist_vector_capsule_auto.nml:** Demonstrates vector capsule networks using the oracle.
+
+**mnist_vector_capsule.nml:** Demonstrates vector capsule networks without using the oracle.
 
 # Tutorial Videos and Guides
 Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)

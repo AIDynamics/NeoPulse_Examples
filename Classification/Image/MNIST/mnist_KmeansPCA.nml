@@ -1,0 +1,24 @@
+oracle("mode") = "unsupervised"
+
+source:
+    bind = "training_data.csv" ;
+    input:
+        x ~ from "Image"
+            -> image: [shape = [28, 28], channels = 1]
+            -> ImageDataGenerator:[] ;
+    params: ;
+
+
+architecture:
+    input:  x ~ image: [shape = [28,28], channels = 1] ;
+    output: y ;
+
+    x -> UnsupervisedFlatten:[]
+    -> Pca:[n_components=8]
+    -> Kmeans:[n_clusters=2]
+    -> y ;
+
+train:
+    compile: ;
+    run: ;
+    dashboard: ;

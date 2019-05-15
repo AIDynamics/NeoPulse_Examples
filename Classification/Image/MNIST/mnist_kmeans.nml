@@ -1,7 +1,7 @@
 oracle("mode") = "unsupervised"
 
 source:
-    bind = "/DM-Dash/Neopulse_Examples/UnsupervisedLearning/KMeans+PCA/image/MNIST/training_data.csv" ;
+    bind = "training_data.csv" ;
     input:
         x ~ from "Image"
             -> image: [shape = [28, 28], channels = 1]
@@ -14,8 +14,7 @@ architecture:
     output: y;
 
     x -> UnsupervisedFlatten:[]
-    -> Pca:[n_components=8]
-    -> Kmeans:[n_clusters=2] 
+    -> Kmeans:[n_clusters=10]
     -> y ;
 
 train:
