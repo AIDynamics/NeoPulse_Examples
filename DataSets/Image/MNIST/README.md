@@ -42,7 +42,7 @@ bind = "/DM-Dash/NeoPulse_Examples/Classification/Image/MNIST/training_data.csv"
 
 **mnist_KmeansPCA.nml:** Demonstrates using k-means + PCA for clustering.
 
-**mnist_KmeansPCA_batch.nml:** Demonstrates batch processing for k-meanst + PCA.
+**mnist_KmeansPCA_batch.nml:** Demonstrates batch processing for k-means + PCA.
 
 **mnist_matrix_capsule_auto.nml:** Demonstrates matrix capsule networks using the oracle.
 

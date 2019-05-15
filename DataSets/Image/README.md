@@ -8,6 +8,8 @@ The CIFAR-10 dataset features 60,000 32x32 color images among 10 classes (6,000 
 
 The MNIST dataset features 60,000 handwritten digits with 10,000 reserved for test. More information on the datasets and data formats can be found at the links above.
 
+The VOC2012 dataset is an example dataset for training a Single Shot MultiBox Detector model for drawing bounding boxes around objects and classifying them.
+
 # Tutorial Videos and Guides
 Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)
 
