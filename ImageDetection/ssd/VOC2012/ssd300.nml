@@ -23,7 +23,7 @@ class_names = ["aeroplane",
         "tvmonitor"]
 
 
-architecture from "/DM-Dash/Neopulse_Examples/ImageDetection/ssd/VOC2012/pre_trained_model/vgg_16.h5":
+architecture from "vgg_16.h5":
     input:
         x ~ image: [shape = [300, 300], channels = 3];
     output:
@@ -221,7 +221,7 @@ architecture from "/DM-Dash/Neopulse_Examples/ImageDetection/ssd/VOC2012/pre_tra
       -> prediction; 
 
 source:
-    bind = "/DM-Dash/Neopulse_Examples/ImageDetection/ssd/VOC2012/training_data.csv";
+    bind = "training_data.csv";
     input:
         img ~ from "image"
           -> image: [shape = [300, 300], channels = 3]

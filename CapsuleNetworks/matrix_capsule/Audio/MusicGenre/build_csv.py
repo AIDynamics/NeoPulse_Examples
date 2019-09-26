@@ -43,7 +43,6 @@ def write_file(validation_split):
 
     # Sort the genres alphabetically.
     genres = humansorted([str(p) for p in Path('genres').iterdir()])
-    cwd = Path.cwd()
     with open('label_names.txt', 'w') as of:
         of.write('Class,Label\n')
         for index, d in enumerate(genres):
@@ -51,7 +50,7 @@ def write_file(validation_split):
             # Construct lines for the csv file in the form:
             # /path/to/audio/file.au,class_number
             # where class_number is the index of each genre class.
-            csv_lines = humansorted([str(cwd) + "/" + str(p) + ',' + str(index) + '\n' for p in Path(d).iterdir()])
+            csv_lines = humansorted([str(p) + ',' + str(index) + '\n' for p in Path(d).iterdir()])
             # shuffle the list:
             shuffle(csv_lines)
             # calculate the index on which to split the list into training/validation
@@ -71,14 +70,10 @@ def write_file(validation_split):
         of.write('Audio,Label\n')
         for l in train:
             of.write(l)
-        for l in valid:
-            of.write(l)
 
     # Write the Querying CSV file.
-    with open('querying_data.csv', 'w') as of:
+    with open('query.csv', 'w') as of:
         of.write('Audio\n')
-        for l in train:
-            of.write(l.split(',')[0] + '\n')
         for l in valid:
             of.write(l.split(',')[0] + '\n')
 

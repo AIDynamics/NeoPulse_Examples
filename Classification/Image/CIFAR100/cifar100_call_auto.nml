@@ -1,7 +1,7 @@
 oracle("mode") = "classification"
 
 source:
-  bind = "/DM-Dash/NeoPulse_Examples/Classification/Image/CIFAR100/training_data.csv" ;
+  bind = "training_data.csv" ;
   input:
     x ~ from "Image"
       -> image: [shape=[32, 32], channels=3]

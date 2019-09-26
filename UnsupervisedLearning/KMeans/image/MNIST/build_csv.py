@@ -61,28 +61,18 @@ def write_csv_file():
         for index, image in enumerate(train_images):
             img_file = 'images/mnist_train_' + str(index) + '.png'
             imwrite(img_file, image)
-            of.write(str(Path(img_file).resolve()) + '\n')
-        '''
-        for index, image in enumerate(test_images):
-            img_file = 'images/mnist_test_' + str(index) + '.png'
-            imwrite(img_file, image)
-            of.write(str(Path(img_file).resolve()) + ',' + str(test_labels[index]) + '\n')
-        '''
-    '''
+            of.write(str(Path(img_file)) + '\n')
+
+    
     # writing querying csv
-    with open('querying_data.csv', 'w') as of:
-        of.write('image\n')
-
-        for index, image in enumerate(train_images):
-            img_file = 'images/mnist_train_' + str(index) + '.png'
-            imwrite(img_file, image)
-            of.write(str(Path(img_file).resolve()) + '\n')
+    with open('query.csv', 'w') as of:
+        of.write('Image\n')
 
         for index, image in enumerate(test_images):
             img_file = 'images/mnist_test_' + str(index) + '.png'
             imwrite(img_file, image)
-            of.write(str(Path(img_file).resolve()) + '\n')
-    '''
+            of.write(str(Path(img_file)) + '\n')
+    
 
 if __name__ == '__main__':
 

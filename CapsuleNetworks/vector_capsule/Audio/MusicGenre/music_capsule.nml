@@ -13,7 +13,7 @@ architecture:
       -> label;
 
 source:
-    bind = "/DM-Dash/NeoPulse_Examples/CapsuleNetworks/vector_capsule/Audio/MusicGenre/training_data.csv";
+    bind = "training_data.csv";
     input:
         img ~ from "Audio"
           -> audio: [maxlen = 1536, nbands = 24]

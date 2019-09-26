@@ -85,7 +85,7 @@ def write_csv_file():
                 bounding_box = [xmin, ymin, xmax, ymax, class_id]
                 bounding_boxes.append(bounding_box)
             image_name = root.find('filename').text
-            image_path = str((image_folder / image_name).resolve())
+            image_path = str((image_folder / image_name))
             jstring = json.dumps(bounding_boxes)
             of.write(image_path + ",\"" + jstring + "\"\n")
 

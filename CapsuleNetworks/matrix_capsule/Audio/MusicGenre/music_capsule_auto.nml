@@ -10,7 +10,7 @@ architecture:
       -> label;
 
 source:
-    bind = "/DM-Dash/NeoPulse_Examples/CapsuleNetworks/matrix_capsule/Audio/MusicGenre/training_data.csv";
+    bind = "training_data.csv";
     input:
         img ~ from "Audio"
           -> audio: [maxlen = 96, nbands = 24]

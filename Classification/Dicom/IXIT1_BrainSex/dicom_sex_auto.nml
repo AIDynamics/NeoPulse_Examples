@@ -11,7 +11,7 @@ architecture:
       -> label;
 
 source:
-    bind = "/DM-Dash/Neopulse_Examples/Classification/Dicom/IXIT1_BrainSex/training_data.csv";
+    bind = "training_data.csv";
     input:
         img ~ from "data"
           -> dicom: [shape = [64, 64, 64, 1]]
@@ -32,7 +32,7 @@ train :
         loss = categorical_crossentropy,
         metrics = ['accuracy'];
     run:
-        epochs = 20;
+        epochs = 2;
     dashboard: ;
 
 

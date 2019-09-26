@@ -67,7 +67,7 @@ def load_data(filename):
     return images, labels
 
 
-def write_data():
+def write_data(validation_split):
     data_path = 'raw_data/cifar-100-python/'
     image_path = 'images/'
 
@@ -82,29 +82,35 @@ def write_data():
         for index, label in enumerate(names[b'fine_label_names']):
             of.write(str(index) + ',' + str(label) + '\n')
 
-    # writing training csv file
-    with open('training_data.csv', 'w') as of:
-        of.write('Image,Class\n')
-        count = 0
-        for file_name in data_files:
-            image_list, labels = load_data(file_name)
-            for ind, image in enumerate(image_list):
-                file_path = image_path + str(count) + '.png'
-                imwrite(file_path, image)
-                of.write(str(Path(file_path).resolve()) + ',' + str(labels[ind]) + '\n')
-                count += 1
+    csv_lines = []
 
-    # writing querying csv file
-    with open('querying_data.csv', 'w') as of:
-        of.write('Image\n')
-        count = 0
-        for file_name in data_files:
-            image_list, labels = load_data(file_name)
-            for ind, image in enumerate(image_list):
-                file_path = image_path + str(count) + '.png'
-                imwrite(file_path, image)
-                of.write(str(Path(file_path).resolve()) + '\n')
-                count += 1
+
+    for file_name in data_files:
+        image_list, labels = load_data(file_name)
+        for ind, image in enumerate(image_list):
+            file_path = image_path + str(count) + '.png'
+            imwrite(file_path, image)
+            csv_lines.append(str(Path(file_path)) + ',' + str(labels[ind]) + '\n') 
+
+    shuffle(csv_lines)
+
+    split_index = int(validation_split * len(csv_lines))
+
+    train = csv_lines[:-split_index]
+    valid = csv_lines[-split_index:]
+
+    # Write the training CSV file.
+    with open('training_data.csv', 'w') as of:
+        of.write('data,label\n')
+        for l in train:
+            of.write(l)
+
+
+    # Write the querying CSV file.
+    with open('query.csv', 'w') as of:
+        of.write('data\n')
+        for l in valid:
+            of.write(l.split(',')[0] + '\n')
 
 
 if __name__ == '__main__':
@@ -112,4 +118,4 @@ if __name__ == '__main__':
     # Download data if necessary
     download_data()
     # Write the data to PNG files, and create a csv file for NeoPulse AI Studio
-    write_data()
+    write_data(0.2)

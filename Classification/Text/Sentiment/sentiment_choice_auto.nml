@@ -3,7 +3,7 @@ oracle("complexity") =  0.1
 oracle("regularization") = 0.99
 
 source:
-    bind = "/DM-Dash/Neopulse_Examples/Classification/Text/Sentiment/training_data.csv" ;
+    bind = "training_data.csv" ;
     input:
         x ~ from "Review"
             -> text: [200]
@@ -34,5 +34,5 @@ train:
     loss = 'categorical_crossentropy',
     metrics = ['accuracy'] ;
   run:
-    epochs = 4 ;
+    epochs = 2 ;
   dashboard: ;

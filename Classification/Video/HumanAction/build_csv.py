@@ -60,7 +60,7 @@ def build_list(data_path, validation_split):
     shuffle(train)
     shuffle(valid)
 
-    return train + valid
+    return (train, valid)
 
 
 def write_data(validation_split):
@@ -76,11 +76,16 @@ def write_data(validation_split):
         for index, label in enumerate(class_names):
             of.write(str(index) + ',' + str(label) + '\n')
 
-    csv_list = build_list(data_path, validation_split)
+    (train, valid) = build_list(data_path, validation_split)
     with open('training_data.csv', 'w') as of:
         of.write('Video,Class\n')
-        for line in csv_list:
+        for line in train:
             of.write(line)
+
+    with open('query.csv', 'w') as of:
+        of.write('Video\n')
+        for line in valid:
+            of.write(line.split(',')[0] + '\n')    
 
 
 if __name__ == '__main__':

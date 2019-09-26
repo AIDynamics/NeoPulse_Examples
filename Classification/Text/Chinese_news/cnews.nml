@@ -1,5 +1,5 @@
 source:
-    bind = "/DM-Dash/Neopulse_Examples/Classification/Text/Chinese_news/training_data.csv" ;
+    bind = "training_data.csv" ;
     input:
         x ~ from "news"
             -> text: [300]

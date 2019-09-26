@@ -12,17 +12,17 @@ architecture:
       -> label;
 
 source:
-    bind = "/DM-Dash/NeoPulse_Examples/CapsuleNetworks/vector_capsule/Image/MNIST/training_data.csv";
+    bind = "training_data.csv";
     input:
-        img ~ from "image"
+        img ~ from "Image"
           -> image: [shape = [28,28], channels = 1]
           -> ImageDataGenerator:[rescale = 0.00392156862745098];
     output:
-      label ~ from "label"
+      label ~ from "Label"
           -> flat: [10]
           -> FlatDataGenerator:[];
     params:
-        batch_size = 64,
+        batch_size = 256,
         shuffle = True,
         shuffle_init = True;
 
@@ -32,7 +32,7 @@ train :
         loss = margin_loss,
         metrics = ['accuracy'];
     run:
-        epochs = 5;
+        epochs = 2;
     dashboard: ;
 
 
