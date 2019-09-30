@@ -1,0 +1,40 @@
+oracle("mode") = "matrix_capsule"
+architecture:
+    input: 
+        audio ~ audio: [maxlen = 96, nbands = 24];
+    output:
+        label ~ flat: [10];
+
+    audio 
+      -> auto
+      -> label;
+
+source:
+    bind = "training_data.csv";
+    input:
+        img ~ from "Audio"
+          -> audio: [maxlen = 96, nbands = 24]
+          -> AudioDataGenerator: [];
+    output:
+      label ~ from "Label"
+          -> flat: [10]
+          -> FlatDataGenerator:[];
+    params:
+        batch_size = 32,
+        shuffle = True,
+        shuffle_init = True;
+
+train :
+    compile:
+        optimizer = auto,
+        loss = auto,
+        metrics = ['accuracy'];
+    run:
+        epochs = 2;
+    dashboard: ;
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+oracle("mode")="regression"
+
+architecture:
+    input: x ~ flat: [7];
+    output: y ~ flat: [1];
+
+    x -> auto -> y;
+
+source:
+    bind = 'training_data.csv';
+    input:
+        x ~ from 'data' -> flat: [7] -> FlatDataGenerator: [];
+    output:
+        y ~ from 'mpg' -> flat: [1] -> FlatDataGenerator: [];
+    params:
+        batch_size=32,
+        shuffle=True,
+        number_validation=10 ;
+
+train:
+    compile:
+        optimizer=auto,
+        loss=auto,
+        metrics=['mae'] ;
+    run:
+        epochs= 2 ;
+    dashboard: ;

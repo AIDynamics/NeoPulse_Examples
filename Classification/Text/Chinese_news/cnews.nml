@@ -1,0 +1,41 @@
+source:
+    bind = "training_data.csv" ;
+    input:
+        x ~ from "news"
+            -> text: [300]
+            -> TextDataGenerator: [nb_words=5001,char_level=True] ;
+    output:
+        y ~ from "label"
+            -> flat: [10]
+            -> FlatDataGenerator: [] ;
+    params:
+        validation_split = 0.2,
+        batch_size = 32;
+
+architecture:
+    input:  x ~ text: [300] ;
+    output: y ~ flat: [10] ;
+
+    x -> Embedding: [5001, 64, input_length=300]
+      -> Conv1D: [256,3, padding='same', strides = 1, activation='relu']
+      -> MaxPooling1D: [pool_size=3]
+      -> Conv1D: [128,3, padding='same', strides = 1, activation='relu']
+      -> MaxPooling1D: [pool_size=3]
+      -> Conv1D: [64,3, padding='same', strides = 1, activation='relu']
+      -> Flatten: []
+      -> Dropout: [0.1]
+      -> BatchNormalization: []
+      -> Dense: [256, activation='relu']
+      -> Dropout: [0.1]
+      -> Dense: [10, activation='softmax']
+      -> y ;
+
+train:
+    compile:
+        optimizer = Adam:[0.001],
+        loss = 'categorical_crossentropy',
+        metrics = ['accuracy'] ;
+    run:
+        epochs = 2 ;
+    dashboard:
+        save_on = 'val_acc' ;

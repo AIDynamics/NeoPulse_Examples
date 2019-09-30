@@ -1,5 +1,5 @@
 source:
-bind = "/DM-Dash/NeoPulseExamples/Classification/Video/training_data.csv" ;
+bind = "training_data.csv" ;
 input:
   x ~ from "Video"
     -> video: [shape=[80, 80], channels=3, seqlength=32]
@@ -10,7 +10,7 @@ output:
     -> FlatDataGenerator: [] ;
 params:
   number_validation = 119,
-  batch_size = 2;
+  batch_size = 16;
 
 
 architecture:
@@ -33,7 +33,7 @@ architecture:
     -> Flatten:[]
     -> Dense: [512, activation='relu']
     -> Dropout: [0.5]
-    -> Dense: [1, activation='softmax']
+    -> Dense: [6, activation='softmax']
     -> y;
 
 train:
@@ -43,6 +43,6 @@ train:
     metrics = ['accuracy'] ;
 
   run:
-    epochs = 4;
+    epochs = 2;
 
   dashboard: ;
