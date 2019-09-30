@@ -8,6 +8,29 @@ The DrivFace dataset features 640x480 pixel color images across 4 drivers (2 wom
 
 This tutorial uses regression to predict a bounding box for the face.
 
+To run this example, first you will need to download and pre-process the raw data for the task using the included ```build_csv.py``` script:
+
+```bash
+$ python build_csv.py
+```
+
+If the script fails, make sure that you have installed all the package dependencies of this script which are: `shutil, pathlib, random, pandas, requests, zipfile, and imageio`.
+
+Missing packages can be installed using pip:
+```bash
+$ pip install <package_name>
+```
+
+Once you've downloaded and pre-processed the data, you can start training using any of the NML scripts provided. To begin training:
+```bash
+$ neopulse train -p <project_name> -f /absolute/path/to/drivface.nml
+```
+In NML file, relative path of .csv file is declared in the line:
+```bash
+bind = "training_data.csv" ;
+```
+
+
 # Tutorial Videos and Guides
 Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)
 
@@ -15,8 +38,6 @@ For more information on using the ImageDataGenerator visit the [Data section] of
 
 # Tutorial Files
 **build_csv.py:** Script creates list of training files and writes training full image paths and corresponding vectors to a training CSV file.
-
-**drive_auto.nml:** Features full use of the auto keyword to automatically generate the entire architecture.
 
 # License
 Tutorial materials are published under the MIT license. See license for commercial, academic, and personal use.

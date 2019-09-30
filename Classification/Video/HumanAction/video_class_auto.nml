@@ -12,7 +12,7 @@ source:
       -> FlatDataGenerator: [] ;
   params:
     number_validation = 119,
-    batch_size = 2;
+    batch_size = 16;
 
 architecture:
     input: x ~ video: [shape=[80, 80], channels=3, seqlength=32] ;

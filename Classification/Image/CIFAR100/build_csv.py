@@ -7,7 +7,7 @@ import numpy as np
 import requests
 from imageio import imwrite
 from natsort import humansorted
-
+from random import shuffle
 
 def download_data():
     '''
@@ -83,6 +83,7 @@ def write_data(validation_split):
             of.write(str(index) + ',' + str(label) + '\n')
 
     csv_lines = []
+    count = 0
 
 
     for file_name in data_files:
@@ -91,6 +92,7 @@ def write_data(validation_split):
             file_path = image_path + str(count) + '.png'
             imwrite(file_path, image)
             csv_lines.append(str(Path(file_path)) + ',' + str(labels[ind]) + '\n') 
+            count += 1
 
     shuffle(csv_lines)
 
@@ -101,14 +103,14 @@ def write_data(validation_split):
 
     # Write the training CSV file.
     with open('training_data.csv', 'w') as of:
-        of.write('data,label\n')
+        of.write('Image,Label\n')
         for l in train:
             of.write(l)
 
 
     # Write the querying CSV file.
     with open('query.csv', 'w') as of:
-        of.write('data\n')
+        of.write('Image\n')
         for l in valid:
             of.write(l.split(',')[0] + '\n')
 

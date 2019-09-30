@@ -7,7 +7,7 @@ source:
       -> image: [shape=[32, 32], channels=3]
       -> ImageDataGenerator: [rescale= 0.003921568627451];
   output:
-    y ~ from "Class"
+    y ~ from "Label"
       -> flat: [100]
       -> FlatDataGenerator: [] ;
   params:

@@ -10,7 +10,7 @@ output:
     -> FlatDataGenerator: [] ;
 params:
   number_validation = 119,
-  batch_size = 2;
+  batch_size = 16;
 
 
 architecture:

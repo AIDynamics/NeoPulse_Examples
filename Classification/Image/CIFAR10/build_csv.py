@@ -92,6 +92,7 @@ def write_data(validation_split):
             of.write(str(index) + ',' + str(label) + '\n')
 
     csv_lines = []
+    count = 0
 
     for file_name in data_files:
         image_list, labels = load_data(file_name)
@@ -99,6 +100,7 @@ def write_data(validation_split):
             file_path = image_path + str(count) + '.png'
             imwrite(file_path, image)
             csv_lines.append(str(Path(file_path)) + ',' + str(labels[ind]) + '\n')
+            count += 1
 
     shuffle(csv_lines)
 

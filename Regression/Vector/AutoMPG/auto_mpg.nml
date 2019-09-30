@@ -13,7 +13,7 @@ source:
     output:
         y ~ from 'mpg' -> flat: [1] -> FlatDataGenerator: [];
     params:
-        batch_size=4,
+        batch_size=32,
         shuffle=True,
         number_validation=10 ;
 

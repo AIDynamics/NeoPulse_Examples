@@ -58,7 +58,7 @@ def write_file(validation_split):
         sex_id = row['SEX_ID (1=m, 2=f)']
         sex_id -= 1
         if IXI_id in pdict:
-            csv_lines.append("{0},{1}\n".format(str(cwd) + "/images/" + pdict[IXI_id], sex_id))
+            csv_lines.append("{0},{1}\n".format("images/" + pdict[IXI_id], sex_id))
 
     shuffle(csv_lines)
 
@@ -84,7 +84,7 @@ def write_file(validation_split):
 if __name__ == '__main__':
 
     # Download data if necessary
-    #download_data()
+    download_data()
 
     # Write files with 20% validation split
     write_file(0.2)

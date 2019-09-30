@@ -12,7 +12,7 @@ source:
       -> FlatDataGenerator: [] ;
   params:
     number_validation = 10000,
-    batch_size = 32 ;
+    batch_size = 128 ;
 
 architecture:
   input:  x ~ image: [shape=[28, 28], channels=1] ;

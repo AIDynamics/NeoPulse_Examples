@@ -11,7 +11,7 @@ source:
         -> flat: [10]
         -> FlatDataGenerator: [] ;
     params:
-      batch_size = 5,
+      batch_size = 16,
       validation_split = 0.2 ;
 
 architecture:
@@ -26,5 +26,5 @@ train:
         loss = auto,
         metrics = ['accuracy'] ;
     run:
-        epochs = 4 ;
+        epochs = 2 ;
     dashboard: ;

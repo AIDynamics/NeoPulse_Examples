@@ -116,11 +116,11 @@ $ pip install <package_name>
 
 Once you've downloaded and pre-processed the data, you can start training using any of the NML scripts provided. To begin training:
 ```bash
-$ neopulse train -p <project_name> -f /DM-Dash/NeoPulse_Examples/ImageDetection/ssd/VOC2012/ssd300.nml
+$ neopulse train -p <project_name> -f /absolute/path/to/ssd300.nml
 ```
-The paths in the NML scripts in this directory assume that you have cloned this repository into the /DM-Dash directory of your machine. If you have put it somewhere else, you'll need to move the NML files into a location under the /DM-Dash directory, and change the path in the line:
+In NML file, relative path of .csv file is declared in the line:
 ```bash
-bind = "/DM-Dash/NeoPulse_Examples/ImageDetection/ssd/VOC2012/training_data.csv" ;
+bind = "training_data.csv" ;
 ```
 
 # Tutorial Files

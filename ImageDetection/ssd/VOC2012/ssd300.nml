@@ -23,7 +23,7 @@ class_names = ["aeroplane",
         "tvmonitor"]
 
 
-architecture from "vgg_16.h5":
+architecture weights "pre_trained_model/vgg_16.h5":
     input:
         x ~ image: [shape = [300, 300], channels = 3];
     output:
