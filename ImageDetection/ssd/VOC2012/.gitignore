@@ -1,5 +1,5 @@
-images/
 raw_data/
-label_names.txt
 training_data.csv
 query.csv
+pre_trained_model/
+VOCdevkit/
