@@ -6,7 +6,7 @@ There are training examples for the following data and task types: Capsule Netwo
 Under each data type folder you will find sample NeoPulse™ Modeling Language (NML) code as well as information on the sample dataset used.
 
 # Tutorial Videos and Guides
-Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-neopulse-tutorials).
+Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer).
 
 # License
 Tutorial materials are published under the MIT license. See license for commercial, academic, and personal use.
