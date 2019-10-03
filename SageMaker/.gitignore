@@ -1,0 +1,7 @@
+raw_data/
+aclImdb/
+unsup/
+data/training/training_data.csv
+data/transform/
+__pycache__/
+.ipynb_checkpoints/
