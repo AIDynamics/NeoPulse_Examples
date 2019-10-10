@@ -1,5 +1,5 @@
 # Introduction
-These sample .nml files are for training a classification model using video data in [NeoPulse™ AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
+These sample .nml files are for training a classification model using video data in [NeoPulse® AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
 
 # Data
 Data for this example is from the [Human Actions Dataset](http://www.nada.kth.se/cvap/actions/). The dataset features 25 subjects performing 6 actions in 4 different scenarios.
@@ -34,9 +34,9 @@ bind = "training_data.csv" ;
 ```
 
 # Tutorial Videos and Guides
-Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)
+Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics® Developer Portal](https://www.dimensionalmechanics.com/ai-developer-portal)
 
-For more information on using the VideoDataGenerator visit the [Data section] of the NeoPulse™ AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
+For more information on using the VideoDataGenerator visit the [Data section] of the NeoPulse® AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
 
 # Tutorial Files
 

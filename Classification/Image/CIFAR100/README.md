@@ -1,5 +1,5 @@
 # Introduction
-These sample .nml files are for training a classification model using audio data in [NeoPulse™ AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
+These sample .nml files are for training a classification model using audio data in [NeoPulse® AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
 
 # Data
 The data for this task can be found at: https://www.cs.toronto.edu/~kriz/cifar.html
@@ -37,9 +37,9 @@ bind = "training_data.csv" ;
 **cifar100_dist_auto.nml:** Features use of the auto keyword to automatically select a value from a specified distribution of values (e.g. gaussian).
 
 # Tutorial Videos and Guides
-Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)
+Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics® Developer Portal](https://www.dimensionalmechanics.com/ai-developer-portal)
 
-For more information on using the ImageDataGenerator visit the [Data section] of the NeoPulse™ AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
+For more information on using the ImageDataGenerator visit the [Data section] of the NeoPulse® AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
 
 # License
 Tutorial materials are published under the MIT license. See license for commercial, academic, and personal use.

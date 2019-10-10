@@ -1,5 +1,5 @@
 # Introduction
-These sample .nml files are for training a classification model using Text data in [NeoPulse™ AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
+These sample .nml files are for training a classification model using Text data in [NeoPulse® AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
 
 # Data
 The data for this task can be found at: http://ai.stanford.edu/~amaas/data/sentiment
@@ -43,9 +43,9 @@ bind = "training_data.csv" ;
 **sentiment_from_pim.nml:**
 
 # Tutorial Videos and Guides
-Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)
+Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics® Developer Portal](https://www.dimensionalmechanics.com/ai-developer-portal)
 
-For more information on using the AudioDataGenerator visit the [Data section] of the NeoPulse™ AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
+For more information on using the AudioDataGenerator visit the [Data section] of the NeoPulse® AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
 
 # License
 Tutorial materials are published under the MIT license. See license for commercial, academic, and personal use.

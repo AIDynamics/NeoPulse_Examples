@@ -1,5 +1,5 @@
 # Introduction
-These sample .nml files are for training a classification model using dicom(Digital Imaging and Communications in Medicine) data in [NeoPulse™ AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
+These sample .nml files are for training a classification model using dicom(Digital Imaging and Communications in Medicine) data in [NeoPulse® AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
 
 # Data
 Data for this example is from the [IXI-T1 Dataset](http://biomedic.doc.ic.ac.uk/brain-development/downloads/IXI/IXI-T1.tar). The dataset contains 591 human brain 3D MR Images with T1 weighted, and corresponding gender label of each image, male or female.
@@ -28,8 +28,8 @@ bind = "training_data.csv" ;
 <b>NOTE: Dicom files are big! Be careful with your batch size, or you may get out of memory (OOM) errors. If that happens, reduce the batch size.</b>
 
 # Tutorial Videos and Guides
-Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)
-For more information on using the AudioDataGenerator visit the [Data section] of the NeoPulse™ AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
+Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics® Developer Portal](https://www.dimensionalmechanics.com/ai-developer-portal)
+For more information on using the AudioDataGenerator visit the [Data section] of the NeoPulse® AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
 
 
 # License

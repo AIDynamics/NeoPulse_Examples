@@ -1,5 +1,5 @@
 # Introduction
-These sample .nml files are for training a PCA + KMeans model using image data in [NeoPulse™ AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
+These sample .nml files are for training a PCA + KMeans model using image data in [NeoPulse® AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
 
 # Data
 The data for this task can be found at: http://yann.lecun.com/exdb/mnist/
@@ -31,9 +31,9 @@ bind = "training_data.csv" ;
 **KMeansPCA_batch.nml:** NML file defines a pca + kmeans process where the model is trained with batched data.
 
 # Tutorial Videos and Guides
-Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)
+Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics® Developer Portal](https://www.dimensionalmechanics.com/ai-developer-portal)
 
-For more information on using the ImageDataGenerator visit the [Data section] of the NeoPulse™ AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
+For more information on using the ImageDataGenerator visit the [Data section] of the NeoPulse® AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
 
 # License
 Tutorial materials are published under the MIT license. See license for commercial, academic, and personal use.
