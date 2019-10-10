@@ -9,7 +9,8 @@ The CIFAR-10 dataset features 60,000 32x32 color images among 10 classes (6,000 
 The MNIST dataset features 60,000 handwritten digits with 10,000 reserved for test. More information on the datasets and data formats can be found at the links above.
 
 # Tutorial Videos and Guides
-Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics® Developer Portal](https://www.dimensionalmechanics.com/ai-developer-portal)
+Tutorial videos are available in the *Tutorials* section of the [DimensionalMechanics® Developer Portal](https://www.dimensionalmechanics.com/ai-developer)
+
 
 For more information on using the ImageDataGenerator visit the [Data section] of the NeoPulse® AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
 

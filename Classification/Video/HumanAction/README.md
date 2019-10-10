@@ -34,7 +34,8 @@ bind = "training_data.csv" ;
 ```
 
 # Tutorial Videos and Guides
-Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics® Developer Portal](https://www.dimensionalmechanics.com/ai-developer-portal)
+Tutorial videos are available in the *Tutorials* section of the [DimensionalMechanics® Developer Portal](https://www.dimensionalmechanics.com/ai-developer)
+
 
 For more information on using the VideoDataGenerator visit the [Data section] of the NeoPulse® AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
 

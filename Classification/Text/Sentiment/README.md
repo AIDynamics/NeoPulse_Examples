@@ -38,12 +38,13 @@ bind = "training_data.csv" ;
 
 **sentiment_multi-GPU.nml:** Features use of the auto keyword to automatically select a value from a specified distribution of values (e.g. gaussian).
 
-**sentiment_from_keras_model.nml:** Features used of 
+**sentiment_from_keras_model.nml:** Features used of
 
 **sentiment_from_pim.nml:**
 
 # Tutorial Videos and Guides
-Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics® Developer Portal](https://www.dimensionalmechanics.com/ai-developer-portal)
+Tutorial videos are available in the *Tutorials* section of the [DimensionalMechanics® Developer Portal](https://www.dimensionalmechanics.com/ai-developer)
+
 
 For more information on using the AudioDataGenerator visit the [Data section] of the NeoPulse® AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
 
