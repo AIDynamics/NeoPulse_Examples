@@ -5,7 +5,7 @@ source:
     input:
       x ~ from "Audio"
         -> audio: [maxlen = 1366, nbands = 96]
-        -> AudioDataGenerator: [];
+        -> AudioDataGenerator: [feature = 'spectrogram'];
     output:
       y ~ from "Label"
         -> flat: [10]

@@ -25,7 +25,7 @@ architecture from "neopulse.pim":
 train:
     compile:
         optimizer = 'rmsprop',
-        loss = 'categorical_crossentropy',
+        loss = 'binary_crossentropy',
         metrics = ['accuracy'] ;
     run:
         epochs = 2 ;
