@@ -42,7 +42,7 @@ def write_file(validation_split):
     valid = []
 
     # Sort the genres alphabetically.
-    genres = humansorted([str(p) for p in Path('genres').iterdir()])
+    genres = humansorted([str(p) for p in Path('genres').iterdir() if p.is_dir()])
     with open('label_names.txt', 'w') as of:
         of.write('Class,Label\n')
         for index, d in enumerate(genres):

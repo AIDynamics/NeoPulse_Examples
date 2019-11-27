@@ -13,14 +13,20 @@ source:
             -> flat: [2]
             -> FlatDataGenerator: [] ;
     params:
-        validation_split = 0.2,
-        batch_size = 5 ;
+        validation_split = 0.5,
+        batch_size = 32 ;
 
 architecture weights "keras_model.h5":
     input:  x ~ text: [200] ;
     output: y ~ flat: [2] ;
 
-    x -> y ;
+    x -> Embedding: [20000, 128]
+      -> Dropout: auto
+      -> Conv1D: auto
+      -> MaxPooling1D: [pool_size=4]
+      -> LSTM: [128]
+      -> Dense: [2, activation='softmax']
+      -> y ;
 
 train:
     compile:

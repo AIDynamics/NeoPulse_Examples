@@ -4,7 +4,7 @@ source:
   bind = "training_data.csv" ;
   input:
     x ~ from "data"
-      -> image: [shape=[640, 480], channels=3]
+      -> image: [shape=[112, 112], channels=3]
       -> ImageDataGenerator: [rescale= 0.003921568627451] ;
   output:
     y ~ from "label"
@@ -15,7 +15,7 @@ source:
     batch_size = 32 ;
 
 architecture:
-  input:  x ~ image: [shape=[640, 480], channels=3] ;
+  input:  x ~ image: [shape=[112, 112], channels=3] ;
   output: y ~ flat: [4] ;
 
   x -> Conv2D: [32,[3,3]]

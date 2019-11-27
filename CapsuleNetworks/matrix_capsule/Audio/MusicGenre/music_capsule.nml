@@ -18,7 +18,7 @@ source:
     input:
         img ~ from "Audio"
           -> audio: [maxlen = 96, nbands = 24]
-          -> AudioDataGenerator: [];
+          -> AudioDataGenerator: [feature = 'spectrogram'];
     output:
       label ~ from "Label"
           -> flat: [10]
