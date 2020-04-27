@@ -34,7 +34,7 @@ bind = "training_data.csv" ;
 <b>NOTE: Audio files are big! Be careful with your batch size, or you may get out of memory (OOM) errors. If that happens, reduce the batch size.</b>
 
 # Tutorial Videos and Guides
-Tutorial videos are available in the *Tutorials* section of the [DimensionalMechanics® Developer Portal](https://www.dimensionalmechanics.com/ai-developer)
+Tutorial videos are available in the *Tutorials* section of the [AIDynamics® Developer Portal](https://www.aidynamics.com/ai-developer)
 
 For more information on using the AudioDataGenerator visit the [Data section] of the NeoPulse® AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
 

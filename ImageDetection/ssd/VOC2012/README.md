@@ -129,7 +129,7 @@ bind = "training_data.csv" ;
 **ssd300.nml:** VGG Based detector runs on 300 * 300 Image.
 
 # Tutorial Videos and Guides
-Tutorial videos are available in the *Tutorials* section of the [DimensionalMechanics® Developer Portal](https://www.dimensionalmechanics.com/ai-developer)
+Tutorial videos are available in the *Tutorials* section of the [AIDynamics® Developer Portal](https://www.aidynamics.com/ai-developer)
 
 
 For more information on using the ImageDataGenerator visit the [Data section] of the NeoPulse® AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
