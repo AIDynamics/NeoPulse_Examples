@@ -29,11 +29,24 @@ def download_data():
             zf.extractall()
 
 
+def remove_space(s):
+    return s.replace(' ', '')
+
+
 def write_csv(validation_split):
     '''
     Load raw csv file, pre-process it, and write training_data.csv for NeoPulse
     '''
     df = pd.read_csv('raw_data/DrivFace/drivPoints.txt')
+
+    # removes spaces in df
+    df['fileName'] = df['fileName'].apply(remove_space)
+
+    # removes spaces in file name
+    for p in Path('DrivImages').iterdir():
+        new_path = Path(remove_space(str(p)))
+        p.replace(new_path)
+
     file_list = [p for p in Path('DrivImages').iterdir()]
     shuffle(file_list)
 
