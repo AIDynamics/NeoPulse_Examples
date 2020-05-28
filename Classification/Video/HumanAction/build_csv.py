@@ -70,7 +70,7 @@ def write_data(validation_split):
     '''
     data_path = 'videos/'
 
-    class_names = humansorted([str(p).split('/')[1] for p in Path(data_path).iterdir() if p.is_dir()])
+    class_names = humansorted([p.parts[-1] for p in Path(data_path).iterdir() if p.is_dir()])
     with open('label_names.txt', 'w') as of:
         of.write('Class,Label\n')
         for index, label in enumerate(class_names):
@@ -85,7 +85,7 @@ def write_data(validation_split):
     with open('query.csv', 'w') as of:
         of.write('Video\n')
         for line in valid:
-            of.write(line.split(',')[0] + '\n')    
+            of.write(line.split(',')[0] + '\n')
 
 
 if __name__ == '__main__':

@@ -34,18 +34,18 @@ def write_csv(validation_split):
     Load raw csv file, pre-process it, and write training_data.csv for NeoPulse
     '''
     df = pd.read_csv('raw_data/DrivFace/drivPoints.txt')
-    file_list = [str(p) for p in Path('DrivImages').iterdir()]
+    file_list = [p for p in Path('DrivImages').iterdir()]
     shuffle(file_list)
 
     csv_lines = []
 
     for f in file_list:
-        image_id = f.split('/')[-1].replace('.jpg', '')
+        image_id = f.parts[-1].replace('.jpg', '')
         vec = []
         for col in ['xF', 'yF', 'wF', 'hF']:
             vec.append(df.loc[df['fileName'] == image_id][col].values[0])
 
-        csv_lines.append(f + ',' + '|'.join([str(p) for p in vec]) + '\n')
+        csv_lines.append(str(f) + ',' + '|'.join([str(p) for p in vec]) + '\n')
 
     shuffle(csv_lines)
 
