@@ -47,7 +47,7 @@ def build_list(data_path, validation_split):
     for c, p in enumerate(class_paths):
         line_list = []
         for f in Path(p).iterdir():
-            line_list.append(str(f.absolute()) + ',' + str(c) + '\n')
+            line_list.append(str(f) + ',' + str(c) + '\n')
 
         shuffle(line_list)
         split_index = int(validation_split * len(line_list))
@@ -60,7 +60,7 @@ def build_list(data_path, validation_split):
     shuffle(train)
     shuffle(valid)
 
-    return train + valid
+    return (train, valid)
 
 
 def write_data(validation_split):
@@ -70,17 +70,22 @@ def write_data(validation_split):
     '''
     data_path = 'videos/'
 
-    class_names = humansorted([str(p).split('/')[1] for p in Path(data_path).iterdir() if p.is_dir()])
+    class_names = humansorted([p.parts[-1] for p in Path(data_path).iterdir() if p.is_dir()])
     with open('label_names.txt', 'w') as of:
         of.write('Class,Label\n')
         for index, label in enumerate(class_names):
             of.write(str(index) + ',' + str(label) + '\n')
 
-    csv_list = build_list(data_path, validation_split)
+    (train, valid) = build_list(data_path, validation_split)
     with open('training_data.csv', 'w') as of:
         of.write('Video,Class\n')
-        for line in csv_list:
+        for line in train:
             of.write(line)
+
+    with open('query.csv', 'w') as of:
+        of.write('Video\n')
+        for line in valid:
+            of.write(line.split(',')[0] + '\n')
 
 
 if __name__ == '__main__':

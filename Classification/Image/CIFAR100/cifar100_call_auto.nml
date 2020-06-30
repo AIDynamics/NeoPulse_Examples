@@ -1,13 +1,13 @@
 oracle("mode") = "classification"
 
 source:
-  bind = "/DM-Dash/NeoPulse_Examples/Classification/Image/CIFAR100/training_data.csv" ;
+  bind = "training_data.csv" ;
   input:
     x ~ from "Image"
       -> image: [shape=[32, 32], channels=3]
       -> ImageDataGenerator: [rescale= 0.003921568627451];
   output:
-    y ~ from "Class"
+    y ~ from "Label"
       -> flat: [100]
       -> FlatDataGenerator: [] ;
   params:
@@ -44,5 +44,5 @@ train:
     loss = 'categorical_crossentropy',
     metrics = ['accuracy'] ;
   run:
-      epochs = 8 ;
+      epochs = 2 ;
   dashboard: ;

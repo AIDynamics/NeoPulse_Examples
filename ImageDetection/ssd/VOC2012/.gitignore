@@ -1,0 +1,5 @@
+raw_data/
+training_data.csv
+query.csv
+pre_trained_model/
+VOCdevkit/

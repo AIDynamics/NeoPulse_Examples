@@ -1,5 +1,5 @@
 # Introduction
-These sample .nml files are for training a classification model using audio data in [NeoPulse™ AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
+These sample .nml files are for training a classification model using audio data in [NeoPulse® AI Studio](https://aws.amazon.com/marketplace/pp/B074NDG36S/ref=vdr_rf).
 
 # Data
 The data for this task can be found at: https://www.cs.toronto.edu/~kriz/cifar.html
@@ -18,11 +18,11 @@ $ pip install <package_name>
 
 Once you've downloaded and pre-processed the data, you can start training using any of the NML scripts provided. To begin training:
 ```bash
-$ neopulse train -p <project_name> -f /DM-Dash/NeoPulse_Examples/Classification/Image/CIFAR100/CIFAR100_full_auto.nml
+$ neopulse train -p <project_name> -f /absolute/path/to/CIFAR100_full_auto.nml
 ```
-The paths in the NML scripts in this directory assume that you have cloned this repository into the /DM-Dash directory of your machine. If you have put it somewhere else, you'll need to move the NML files into a location under the /DM-Dash directory, and change the path in the line:
+In NML file, relative path of .csv file is declared in the line:
 ```bash
-bind = "/DM-Dash/NeoPulse_Examples/Classification/Image/CIFAR100/training_data.csv" ;
+bind = "training_data.csv" ;
 ```
 
 # Tutorial Files
@@ -37,9 +37,10 @@ bind = "/DM-Dash/NeoPulse_Examples/Classification/Image/CIFAR100/training_data.c
 **cifar100_dist_auto.nml:** Features use of the auto keyword to automatically select a value from a specified distribution of values (e.g. gaussian).
 
 # Tutorial Videos and Guides
-Tutorial videos are available in the *Tutorials & Guides* section of the [DimensionalMechanics™ Developer Portal](https://dimensionalmechanics.com/ai-developer-portal)
+Tutorial videos are available in the *Tutorials* section of the [AIDynamics® Developer Portal](https://www.aidynamics.com/ai-developer)
 
-For more information on using the ImageDataGenerator visit the [Data section] of the NeoPulse™ AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
+
+For more information on using the ImageDataGenerator visit the [Data section] of the NeoPulse® AI Studio Documentation(https://docs.neopulse.ai/NML-source/#data)
 
 # License
 Tutorial materials are published under the MIT license. See license for commercial, academic, and personal use.

@@ -7,13 +7,13 @@ architecture:
     x -> auto -> y;
 
 source:
-    bind = '/home/ubuntu/data.csv';
+    bind = 'training_data.csv';
     input:
         x ~ from 'data' -> flat: [7] -> FlatDataGenerator: [];
     output:
         y ~ from 'mpg' -> flat: [1] -> FlatDataGenerator: [];
     params:
-        batch_size=4,
+        batch_size=32,
         shuffle=True,
         number_validation=10 ;
 
@@ -23,5 +23,5 @@ train:
         loss=auto,
         metrics=['mae'] ;
     run:
-        epochs= 10 ;
+        epochs= 2 ;
     dashboard: ;

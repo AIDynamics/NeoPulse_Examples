@@ -1,4 +1,5 @@
 images/
 raw_data/
-training_data.csv
 label_names.txt
+training_data.csv
+query.csv
