@@ -22,7 +22,7 @@ architecture weights "keras_model.h5":
 
     x -> Embedding: [20000, 128]
       -> Dropout: auto
-      -> Conv1D: auto
+      -> Conv1D: [71,kernel_size=11, strides=3]
       -> MaxPooling1D: [pool_size=4]
       -> LSTM: [128]
       -> Dense: [2, activation='softmax']
