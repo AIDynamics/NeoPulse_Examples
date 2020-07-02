@@ -26,11 +26,11 @@ architecture:
 
    x1 -> Conv2D:[64, [1, 1], strides=[1, 1], kernel_initializer='he_normal', name='res2a_branch2a']
       -> BatchNormalization:[axis=3, name='bn2a_branch2a']
-      -> Activation['relu']
+      -> Activation:['relu']
 
       -> Conv2D:[64, [3, 3], padding='same', kernel_initializer='he_normal', name='res2a_branch2b']
       -> BatchNormalization:[axis=3, name='bn2a_branch2b']
-      -> Activation['relu']
+      -> Activation:['relu']
 
       -> Conv2D:[256, [1, 1], kernel_initializer='he_normal', name='res2a_branch2c']
       -> BatchNormalization:[axis=3, name='bn2a_branch2c']
@@ -56,7 +56,7 @@ architecture:
       -> Conv2D:[256, [1, 1], kernel_initializer='he_normal', name='res2b_branch2c']
       -> BatchNormalization:[axis=3, name='bn2b_branch2c']
       -> y21
-    
+
 [x2,y21]-> Add:[]
       -> Activation:['relu']
       -> x3
@@ -73,7 +73,7 @@ architecture:
       -> Conv2D:[256, [1, 1], kernel_initializer='he_normal', name='res2c_branch2c']
       -> BatchNormalization:[axis=3, name='bn2c_branch2c']
       -> y31
-    
+
 [x3,y31] -> Add:[]
       -> Activation:['relu']
       -> x4
@@ -81,11 +81,11 @@ architecture:
 
    x4 -> Conv2D:[128, [1, 1], strides=[2, 2], kernel_initializer='he_normal', name='res3a_branch2a']
       -> BatchNormalization:[axis=3, name='bn3a_branch2a']
-      -> Activation['relu']
+      -> Activation:['relu']
 
       -> Conv2D:[128, [3, 3], padding='same', kernel_initializer='he_normal', name='res3a_branch2b']
       -> BatchNormalization:[axis=3, name='bn3a_branch2b']
-      -> Activation['relu']
+      -> Activation:['relu']
 
       -> Conv2D:[512, [1, 1], kernel_initializer='he_normal', name='res3a_branch2c']
       -> BatchNormalization:[axis=3, name='bn3a_branch2c']
@@ -112,7 +112,7 @@ architecture:
       -> Conv2D:[512, [1, 1], kernel_initializer='he_normal', name='res3b_branch2c']
       -> BatchNormalization:[axis=3, name='bn3b_branch2c']
       -> y51
-    
+
 [x5, y51] -> Add:[]
       -> Activation:['relu']
       -> x6
@@ -129,7 +129,7 @@ architecture:
       -> Conv2D:[512, [1, 1], kernel_initializer='he_normal', name='res3c_branch2c']
       -> BatchNormalization:[axis=3, name='bn3c_branch2c']
       -> y61
-    
+
 [x6,y61] -> Add:[]
       -> Activation:['relu']
       -> x7
@@ -146,7 +146,7 @@ architecture:
       -> Conv2D:[512, [1, 1], kernel_initializer='he_normal', name='res3d_branch2c']
       -> BatchNormalization:[axis=3, name='bn3d_branch2c']
       -> y71
-    
+
 [x7,y71] -> Add:[]
       -> Activation:['relu']
       -> x8
@@ -154,11 +154,11 @@ architecture:
 
    x8 -> Conv2D:[256, [1, 1], strides=[2,2], kernel_initializer='he_normal', name='res4a_branch2a']
       -> BatchNormalization:[axis=3, name='bn4a_branch2a']
-      -> Activation['relu']
+      -> Activation:['relu']
 
       -> Conv2D:[256, [3, 3], padding='same', kernel_initializer='he_normal', name='res4a_branch2b']
       -> BatchNormalization:[axis=3, name='bn4a_branch2b']
-      -> Activation['relu']
+      -> Activation:['relu']
 
       -> Conv2D:[1024, [1, 1], kernel_initializer='he_normal', name='res4a_branch2c']
       -> BatchNormalization:[axis=3, name='bn4a_branch2c']
@@ -185,7 +185,7 @@ architecture:
       -> Conv2D:[1024, [1, 1], kernel_initializer='he_normal', name='res4b_branch2c']
       -> BatchNormalization:[axis=3, name='bn4b_branch2c']
       -> y91
-    
+
 [x9,y91] -> Add:[]
       -> Activation:['relu']
       -> x10
@@ -202,7 +202,7 @@ architecture:
       -> Conv2D:[1024, [1, 1], kernel_initializer='he_normal', name='res4c_branch2c']
       -> BatchNormalization:[axis=3, name='bn4c_branch2c']
       -> y101
-    
+
 [x10,y101] -> Add:[]
       -> Activation:['relu']
       -> x11
@@ -220,7 +220,7 @@ architecture:
       -> Conv2D:[1024, [1, 1], kernel_initializer='he_normal', name='res4d_branch2c']
       -> BatchNormalization:[axis=3, name='bn4d_branch2c']
       -> y111
-    
+
 [x11,y111] -> Add:[]
       -> Activation:['relu']
       -> x12
@@ -238,13 +238,13 @@ architecture:
       -> Conv2D:[1024, [1, 1], kernel_initializer='he_normal', name='res4e_branch2c']
       -> BatchNormalization:[axis=3, name='bn4e_branch2c']
       -> y121
-    
+
 [x12,y121] -> Add:[]
       -> Activation:['relu']
       -> x13
 
 
-    
+
   x13 -> Conv2D:[256, [1, 1], kernel_initializer='he_normal', name='res4f_branch2a']
       -> BatchNormalization:[axis=3, name='bn4f_branch2a']
       -> Activation:['relu']
@@ -256,7 +256,7 @@ architecture:
       -> Conv2D:[1024, [1, 1], kernel_initializer='he_normal', name='res4f_branch2c']
       -> BatchNormalization:[axis=3, name='bn4f_branch2c']
       -> y131
-    
+
 [x13,y131] -> Add:[]
       -> Activation:['relu']
       -> x14
@@ -273,7 +273,7 @@ architecture:
       -> Conv2D:[2048, [1, 1], kernel_initializer='he_normal', name='res5a_branch2c']
       -> BatchNormalization:[axis=3, name='bn5a_branch2c']
       -> y141
-    
+
 [x14,y141] -> Add:[]
       -> Activation:['relu']
       -> x15
@@ -290,7 +290,7 @@ architecture:
       -> Conv2D:[2048, [1, 1], kernel_initializer='he_normal', name='res5b_branch2c']
       -> BatchNormalization:[axis=3, name='bn5b_branch2c']
       -> y151
-    
+
 [x15,y151] -> Add:[]
       -> Activation:['relu']
       -> x16
@@ -307,7 +307,7 @@ architecture:
       -> Conv2D:[2048, [1, 1], kernel_initializer='he_normal', name='res5c_branch2c']
       -> BatchNormalization:[axis=3, name='bn5c_branch2c']
       -> y161
-    
+
 [x16,y161] -> Add:[]
       -> Activation:['relu']
 
