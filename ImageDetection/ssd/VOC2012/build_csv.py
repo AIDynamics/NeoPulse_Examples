@@ -88,6 +88,22 @@ def write_csv_file():
             image_path = str((image_folder / image_name))
             jstring = json.dumps(bounding_boxes)
             of.write(image_path + ",\"" + jstring + "\"\n")
+    
+    with open('query.csv', 'w') as of:
+        of.write('image\n')
+        filenames = os.listdir(str(xml_path))
+
+        # Gets the first 20 rows
+        num = 20
+        
+        for index, filename in enumerate(filenames):
+            if index >= num:
+                break
+            tree = ElementTree.parse(str(xml_path / filename))
+            root = tree.getroot()
+            image_name = root.find('filename').text
+            image_path = str((image_folder / image_name))
+            of.write(image_path + "\n")
 
 
 if __name__ == '__main__':
