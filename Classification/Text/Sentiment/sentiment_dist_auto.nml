@@ -31,7 +31,7 @@ train:
     compile:
         optimizer = 'rmsprop',
         loss = 'categorical_crossentropy',
-        metrics = ['accuracy'] ;
+        metrics = [Accuracy:[]] ;
     run:
         epochs = 2 ;
     dashboard: ;

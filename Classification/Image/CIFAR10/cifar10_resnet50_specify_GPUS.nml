@@ -1,3 +1,5 @@
+oracle("gpus") = [0,2,4,6]
+
 source:
     bind = "training_data.csv" ;
     input:

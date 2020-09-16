@@ -1,4 +1,5 @@
 oracle("mode") = "classification"
+oracle("gpus") = [0,3,4]
 
 source:
   bind = "training_data.csv" ;

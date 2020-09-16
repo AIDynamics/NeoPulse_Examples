@@ -40,7 +40,7 @@ train:
   compile:
     optimizer = SGD: [lr=0.0001, momentum=0.9],
     loss = 'binary_crossentropy',
-    metrics = ['accuracy'] ;
+    metrics = [Accuracy:[]] ;
 
   run:
     epochs = 2;

@@ -1,6 +1,7 @@
-oracle("generated") = 2
+oracle("generated") = 1
 oracle("complexity") =  0.1
 oracle("regularization") = 0.99
+oracle("gpus") = [0,2]
 
 source:
     bind = "training_data.csv" ;
@@ -14,25 +15,25 @@ source:
             -> FlatDataGenerator: [] ;
     params:
         validation_split = 0.5,
-        batch_size = 64,
-        shuffle_init = False;
+        batch_size = 1024;
 
 architecture:
-    input:  x ~ text: [200] ;
+    input:  x ~ text: [100] ;
     output: y ~ flat: [2] ;
 
     x -> Embedding: [20000, 128]
-      -> Dropout: [auto(0.25 ? 0.50 | name="Drop")]
+      -> Dropout: [0.5]
       -> Convolution1D: [64, 4]
       -> MaxPooling1D: [pool_size=4]
       -> LSTM: [128]
-      -> Dense: [2, activation='softmax'] -> y ;
+      -> Dense: [2, activation='softmax']
+      -> y ;
 
 train:
-  compile:
-    optimizer = 'rmsprop',
-    loss = 'categorical_crossentropy',
-    metrics = [Accuracy:[]] ;
-  run:
-    epochs = 2 ;
-  dashboard: ;
+    compile:
+        optimizer = 'rmsprop',
+        loss = 'categorical_crossentropy',
+        metrics = [Accuracy:[]] ;
+    run:
+        epochs = 2 ;
+    dashboard: ;

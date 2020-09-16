@@ -1,3 +1,5 @@
+oracle("gpus") = 8
+
 source:
     bind = "training_data.csv" ;
     input:

@@ -30,7 +30,7 @@ train :
     compile:
         optimizer = Adam:[lr = 0.001],
         loss = margin_loss,
-        metrics = ['accuracy'];
+        metrics = [Accuracy:[]];
     run:
         epochs = 2;
     dashboard: ;

@@ -1,4 +1,4 @@
-oracle("mode") = "vector_capsule"
+oracle("gpus") = 4
 
 architecture:
     input: 
@@ -6,7 +6,12 @@ architecture:
     output:
         label ~ flat: [10];
 
-    img -> auto -> label;
+    img 
+      -> Conv2D:[filters = 256, kernel_size = 9, strides = 1, padding = 'valid', activation = 'relu', name = 'conv1']
+      -> PrimaryCaps_Vector:[capsule_dim = 8, channels = 32, kernel_size = [9,9],strides = [2,2], padding = 'valid', name = 'primarycap_conv2D']
+      -> DigitCaps: [num_capsule = 10, capsule_dim = 16, routings = 3, name = 'digitcaps']
+      -> ClassCaps:[num_capsule = 10]
+      -> label;
 
 source:
     bind = "training_data.csv";
@@ -19,14 +24,14 @@ source:
           -> flat: [10]
           -> FlatDataGenerator:[];
     params:
-        batch_size = 64,
+        batch_size = 256,
         shuffle = True,
         shuffle_init = True;
 
 train :
     compile:
-        optimizer = auto,
-        loss = auto,
+        optimizer = Adam:[lr = 0.001],
+        loss = margin_loss,
         metrics = [Accuracy:[]];
     run:
         epochs = 2;

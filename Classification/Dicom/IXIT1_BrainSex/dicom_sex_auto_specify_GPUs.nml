@@ -1,4 +1,5 @@
 oracle("mode")="classification"
+oracle("gpus") = [0,2,4,6]
 
 architecture:
     input: 

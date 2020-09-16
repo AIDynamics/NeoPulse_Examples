@@ -1,4 +1,5 @@
 oracle("mode") = "SSD"
+oracle("gpus") = 8
 
 num_classes = 20
 class_names = ["aeroplane",
@@ -232,7 +233,7 @@ source:
           -> bbox: []
           -> BBoxDataGenerator:[num_classes = 20];
     params:
-        batch_size = 16,
+        batch_size = 128,
         shuffle = True,
         shuffle_init = True;
 

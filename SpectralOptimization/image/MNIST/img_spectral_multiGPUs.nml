@@ -1,4 +1,5 @@
 oracle("mode") = "spectral_opt"
+oracle("gpus") = 2
 
 source:
     bind = "training_data.csv";
