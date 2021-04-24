@@ -9,8 +9,8 @@ from sklearn.datasets import load_boston
 def write_csv_file(train_test_split=0.2):
 
     boston = load_boston()
-    data = boston.data[:, :12]
-    price = boston.data[:, 12]
+    data = boston.data
+    price = boston.target
 
     data_lines = ['|'.join([str(e) for e in linedata]) for linedata in data]
 
