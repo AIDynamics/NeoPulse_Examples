@@ -1,24 +1,15 @@
+oracle("mode") = "SSD"
+
 architecture weights "pre_trained_model/vgg_16.h5":
-    input:
-        x ~ image: [shape = [300, 300], channels = 3];
-    output:
-        prediction ~ bbox: [num_classes = 20];
-
-
-        x->SSD:[num_classes_plus_bg=21, image_size=[300,300]]
-         -> prediction;
+         image -> auto -> label;
 
 
 source:
     bind = "training_data.csv";
     input:
-        img ~ from "image"
-          -> image: [shape = [300, 300], channels = 3]
-          -> ImageDataGenerator:[];
+        image -> image: [shape = [300, 300], channels = 3];
     output:
-      label ~ from "label"
-          -> bbox: []
-          -> BBoxDataGenerator:[num_classes = 20];
+        label -> bbox: [num_classes=20];
     params:
         batch_size = 16,
         shuffle = True,
