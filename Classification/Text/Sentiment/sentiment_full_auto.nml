@@ -1,30 +1,22 @@
 oracle("mode") = "classification"
-oracle("complexity") =  0.1
+oracle("complexity") =  0.1 #try 0.5, 0.75, etc. for greater complexity
+
 
 source:
     bind = "training_data.csv" ;
     input:
-        x ~ from "Review"
-            -> text: [200]
-            -> TextDataGenerator: [nb_words=20000] ;
+        Review -> text: [200];
     output:
-        y ~ from "Label"
-            -> flat: [2]
-            -> FlatDataGenerator: [] ;
+        Label -> number: [2];
     params:
-        validation_split = 0.5 ;
+        validation_split = 0.5;
 
 architecture:
-    input:  x ~ text: [200] ;
-    output: y ~ flat: [2] ;
-
-    x -> auto -> y ;
+    Review -> auto -> Label ;
 
 train:
     compile:
-        optimizer = auto,
-        loss = auto,
         metrics = ['accuracy'] ;
     run:
-        epochs = 2 ;
+        epochs = 20 ;
     dashboard: ;
