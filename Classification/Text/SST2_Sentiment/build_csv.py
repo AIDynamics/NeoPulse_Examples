@@ -28,6 +28,7 @@ def write_training_data():
     """
     Write a csv file containing the text and labels.
     """
+
     CSV_FILE = 'training_data.csv'
     TSV_FILE = 'train.tsv'
     cwd = os.getcwd()
@@ -60,5 +61,6 @@ if __name__ == '__main__':
     write_training_data()
     write_inference_data()
     
+    # Remove downloaded files    
     path = os.path.join(os.getcwd(), 'SST-2')
     shutil.rmtree(path)
