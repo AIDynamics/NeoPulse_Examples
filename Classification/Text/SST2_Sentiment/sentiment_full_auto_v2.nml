@@ -1,0 +1,21 @@
+oracle("mode") = "classification"
+oracle("complexity") =  0.1
+
+source:
+    bind = "training_data.csv" ;
+    input:
+        sentence -> text: [200];
+    output:
+    	label -> number: [2];
+    params:
+        validation_split = 0.2;
+
+architecture:
+    sentence -> auto -> label;
+
+train:
+    compile:
+        metrics = [Accuracy:[]] ;
+    run:
+        epochs = 20 ;
+    dashboard: ;

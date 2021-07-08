@@ -30,6 +30,8 @@ bind = "training_data.csv" ;
 
 **sentiment_full_auto.nml:** Features full use of the auto keyword to automatically generate the entire architecture.
 
+**sentiment_full_auto_v2.nml:** Features full use of the auto keyword to automatiically generate the entire architecture, in NML 2.0.
+
 **sentiment_call_auto.nml:** Features the use of auto to automatically select an architecture later.
 
 **sentiment_choice_auto.nml:** Features use of auto keyword to automatically select from range of values for a given parameter.
@@ -38,7 +40,7 @@ bind = "training_data.csv" ;
 
 **sentiment_multi-GPU.nml:** Features use of the auto keyword to automatically select a value from a specified distribution of values (e.g. gaussian).
 
-**sentiment_from_keras_model.nml:** Features used of
+**sentiment_from_keras_model.nml:**
 
 **sentiment_from_pim.nml:**
 

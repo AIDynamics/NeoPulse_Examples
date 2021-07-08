@@ -1,0 +1,24 @@
+oracle("mode") = "classification"
+
+source:
+	bind = "training_data.csv";
+	input:
+		Image -> image: [shape=[32, 32], channels=3, bit_depth=8];
+  	output:
+  		Class -> number: [10];
+
+	params:
+    		number_validation = 10000,
+    		batch_size = 32;
+
+architecture:
+	Image -> auto -> Class ;
+
+train:
+	compile:
+    		metrics = [Accuracy:[]] ;
+  	run:
+    		epochs = 20;
+  	dashboard: ;
+
+

@@ -30,6 +30,8 @@ bind = "training_data.csv" ;
 
 **mnist_full_auto.nml:** Features full use of the auto keyword to automatically generate the entire architecture.
 
+**mnist_full_auto_v2.nml:** Features full use of the auto keyword to automatically generate the entire architecture, in NML 2.0.
+
 **mnist_call_auto.nml:** Features the use of auto to automatically select an architecture later.
 
 **mnist_choice_auto.nml:** Features use of auto keyword to automatically select from range of values for a given parameter.

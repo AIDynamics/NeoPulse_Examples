@@ -34,6 +34,8 @@ bind = "training_data.csv" ;
 
 **cifar10_choice_auto.nml:** Features use of auto keyword to automatically select from range of values for a given parameter.
 
+**cifar10_choice_auto_v2.nml:** Features use of auto keyword to automatically select from range of values for a given parameter, in NML 2.0.
+
 **cifar10_dist_auto.nml:** Features use of the auto keyword to automatically select a value from a specified distribution of values (e.g. gaussian).
 
 # Tutorial Videos and Guides
