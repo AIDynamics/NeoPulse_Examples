@@ -1,0 +1,23 @@
+oracle("mode")="regression"
+
+source:
+    bind = 'training_data.csv';
+    input:
+		Data -> number: [13];
+    output:
+		Price -> number: [1];
+    params:
+        batch_size=16,
+        shuffle_init=True,
+        validation_split=0.2;
+
+architecture:
+    Data -> auto -> Price;
+
+train:
+    compile:
+        metrics=[MeanAbsoluteError:[]];
+    run:
+        epochs=50;
+    dashboard: ;
+

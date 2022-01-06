@@ -1,0 +1,60 @@
+oracle("mode") = "spectral_opt"
+oracle("gpus") = 2
+
+source:
+    bind = "training_data.csv";
+    input:
+        x ~ from "Image"
+            -> image: [shape = [28,28], channels = 1]
+            -> ImageDataGenerator: [rescale=0.00392156862745098];
+
+    output:
+        y ~ from "Label" -> flat: [10] -> FlatDataGenerator: [] ;
+
+    params:
+      shuffle = True,
+      shuffle_init = True;
+      
+architecture:
+    input:
+      x1 ~ image: [shape = [28,28], channels = 1];
+    output:
+      y1 ~ flat:  [10];
+
+    x1 -> Conv2D: [32,[3,3]]
+       -> Activation: ['relu']
+       -> Conv2D: [32,[3,3]]
+       -> Activation: ['relu']
+       -> MaxPooling2D: [pool_size=2]
+       -> Conv2D: [64,[3,3]]
+       -> Activation: ['relu']
+       -> Conv2D: [64,[3,3]]
+       -> Activation: ['relu']
+       -> MaxPooling2D: [pool_size=2]
+       -> Flatten:[]
+       -> Dense: [10]
+       -> Activation: ['softmax']
+       -> y1;
+
+
+train:
+    compile:
+        opt_options = ['sgd', 'adam', 'adamax'],
+        lr_options = [0.03, 0.01, 0.003, 0.001, 0.0003],
+        momentum_options = [0.99, 0.9, 0.0],
+        decay_options = [0.0001, 0.0],
+        batch_options = [64,128,256,512],
+        loss = 'categorical_crossentropy',
+        metrics = [Accuracy:[]] ;
+
+    run:
+        epochs = 2;
+
+dashboard: ;
+
+  
+
+
+
+
+

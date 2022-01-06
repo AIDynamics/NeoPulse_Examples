@@ -1,0 +1,43 @@
+oracle("mode")="classification"
+oracle("gpus") = 8
+
+architecture:
+    input: 
+        img ~ dicom: [shape = [64,64,64,1]];
+    output:
+        label ~ flat: [2];
+
+    img 
+      -> auto
+      -> label;
+
+source:
+    bind = "training_data.csv";
+    input:
+        img ~ from "data"
+          -> dicom: [shape = [64, 64, 64, 1]]
+          -> DicomDataGenerator:[spacing=[2.0,2.0,2.0],normalise_zero_to_one = True,flip=True];
+    output:
+      label ~ from "label"
+          -> flat: [2]
+          -> FlatDataGenerator:[];
+    params:
+        batch_size = 8,
+        shuffle = True,
+        shuffle_init = True,
+        repeat_per_load=10;
+
+train :
+    compile:
+        optimizer = Adam:[lr = 0.0001],
+        loss = 'categorical_crossentropy',
+        metrics = [Accuracy:[]];
+    run:
+        epochs = 2;
+    dashboard: ;
+
+
+
+
+
+

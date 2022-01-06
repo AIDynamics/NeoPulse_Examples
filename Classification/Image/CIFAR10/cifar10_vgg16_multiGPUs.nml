@@ -1,0 +1,60 @@
+oracle("gpus") = 8
+
+source:
+    bind = "training_data.csv" ;
+    input:
+        x ~ from "Image"
+            -> image: [shape=[224, 224], channels=3]
+            -> ImageDataGenerator: [rescale= 0.003921568627451] ;
+    output:
+        y ~ from "Class"
+            -> flat: [1000]
+            -> FlatDataGenerator: [] ;
+    params:
+        batch_size = 128 ;
+
+architecture:
+    input:  x ~ image: [shape=[224, 224], channels=3] ;
+    output: y ~ flat: [1000] ;
+
+    x -> Conv2D:[64, [3,3], strides = [1,1], activation = 'relu', padding = "same", name = 'conv1_1']
+      -> Conv2D:[64, [3,3], strides = [1,1], activation = 'relu', padding = "same", name = 'conv1_2']
+      -> MaxPooling2D:[pool_size = [2,2], strides = [2,2], padding = "same", name = 'pool1']
+
+
+      -> Conv2D:[128, [3,3], strides = [1,1], activation = 'relu', padding = "same", name = 'conv2_1']
+      -> Conv2D:[128, [3,3], strides = [1,1], activation = 'relu', padding = "same", name = 'conv2_2']
+      -> MaxPooling2D:[pool_size = [2,2], strides = [2,2], padding = "same", name = 'pool2']
+
+
+      -> Conv2D:[256, [3,3], strides = [1,1], activation = 'relu', padding = "same", name = 'conv3_1']
+      -> Conv2D:[256, [3,3], strides = [1,1], activation = 'relu', padding = "same", name = 'conv3_2']
+      -> Conv2D:[256, [3,3], strides = [1,1], activation = 'relu', padding = "same", name = 'conv3_3']
+      -> MaxPooling2D:[pool_size = [2,2], strides = [2,2], padding = "same", name = 'pool3']
+
+
+      -> Conv2D:[512, [3,3], strides = [1,1], activation = 'relu', padding = "same", name = 'conv4_1']
+      -> Conv2D:[512, [3,3], strides = [1,1], activation = 'relu', padding = "same", name = 'conv4_2']
+      -> Conv2D:[512, [3,3], strides = [1,1], activation = 'relu', padding = "same", name = 'conv4_3']
+      -> MaxPooling2D:[pool_size = [2,2], strides = [2,2], padding = "same", name = 'pool4']
+
+
+      -> Conv2D:[512, [3,3], strides = [1,1], activation = 'relu', padding = "same", name = 'conv5_1']
+      -> Conv2D:[512, [3,3], strides = [1,1], activation = 'relu', padding = "same", name = 'conv5_2']
+      -> Conv2D:[512, [3,3], strides = [1,1], activation = 'relu', padding = "same", name = 'conv5_3']
+      -> MaxPooling2D:[pool_size = [3,3], strides = [1,1], padding = "same", name = 'pool5']
+
+      -> Flatten:[]
+      -> Dense:[4096, activation = 'relu', name = "dense1"]
+      -> Dense:[4096, activation = 'relu', name = "dense2"]
+      -> Dense:[1000, activation='softmax', name="dense3"]
+      -> y ;
+
+train Ngpu 4:
+    compile:
+        optimizer = Adam:[lr=0.0001],
+        loss = 'categorical_crossentropy',
+        metrics = [Accuracy:[]] ;
+    run:
+        epochs = 2 ;
+    dashboard: ;

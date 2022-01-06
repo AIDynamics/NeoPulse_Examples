@@ -1,0 +1,5 @@
+raw_data/
+aclImdb/
+training_data.csv
+full_query.csv
+short_query.csv

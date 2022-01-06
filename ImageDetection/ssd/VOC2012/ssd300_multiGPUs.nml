@@ -1,0 +1,246 @@
+oracle("mode") = "SSD"
+oracle("gpus") = 8
+
+num_classes = 20
+class_names = ["aeroplane",
+        "bicycle",
+        "bird",
+        "boat",
+        "bottle",
+        "bus",
+        "car",
+        "cat",
+        "chair",
+        "cow",
+        "diningtable",
+        "dog",
+        "horse",
+        "motorbike",
+        "person",
+        "pottedplant",
+        "sheep",
+        "sofa",
+        "train",
+        "tvmonitor"]
+
+
+architecture weights "pre_trained_model/vgg_16.h5":
+    input:
+        x ~ image: [shape = [300, 300], channels = 3];
+    output:
+        prediction ~ bbox: [num_classes = 20];
+
+
+    x -> Conv2D:[64, [3,3], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv1_1']
+      -> Conv2D:[64, [3,3], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv1_2']
+      -> MaxPooling2D:[pool_size = [2,2], strides = [2,2], padding = "same", name = 'pool1']
+
+
+      -> Conv2D:[128, [3,3], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv2_1']
+      -> Conv2D:[128, [3,3], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv2_2']
+      -> MaxPooling2D:[pool_size = [2,2], strides = [2,2], padding = "same", name = 'pool2']
+
+
+      -> Conv2D:[256, [3,3], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv3_1']
+      -> Conv2D:[256, [3,3], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv3_2']
+      -> Conv2D:[256, [3,3], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv3_3']
+      -> MaxPooling2D:[pool_size = [2,2], strides = [2,2], padding = "same", name = 'pool3']
+
+
+      -> Conv2D:[512, [3,3], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv4_1']
+      -> Conv2D:[512, [3,3], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv4_2']
+      -> Conv2D:[512, [3,3], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv4_3']
+      -> conv4_3
+
+
+    conv4_3
+      -> MaxPooling2D:[pool_size = [2,2], strides = [2,2], padding = "same", name = 'pool4']
+
+
+      -> Conv2D:[512, [3,3], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv5_1']
+      -> Conv2D:[512, [3,3], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv5_2']
+      -> Conv2D:[512, [3,3], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv5_3']
+      -> MaxPooling2D:[pool_size = [3,3], strides = [1,1], padding = "same", name = 'pool5']
+
+
+      -> Conv2D:[1024, [3,3], dilation_rate= [6,6], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'fc6']
+
+
+      -> Conv2D:[1024, [1,1], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'fc7']
+      -> fc7
+
+
+    fc7
+      -> Conv2D:[256, [1,1], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv6_1']
+      -> ZeroPadding2D:[padding = [[1,1],[1,1]], name = 'conv6_padding']
+      -> Conv2D:[512, [3,3], strides = [2,2], activation = 'relu', padding = "valid", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv6_2']
+      -> conv6_2 
+
+
+    conv6_2
+      -> Conv2D:[128, [1,1], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv7_1']
+      -> ZeroPadding2D:[padding = [[1,1],[1,1]], name = 'conv7_padding']
+      -> Conv2D:[256, [3,3], strides = [2,2], activation = 'relu', padding = "valid", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv7_2']
+      -> conv7_2   
+
+
+    conv7_2
+      -> Conv2D:[128, [1,1], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv8_1']
+      -> Conv2D:[256, [3,3], strides = [1,1], activation = 'relu', padding = "valid", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv8_2']
+      -> conv8_2 
+
+
+    conv8_2
+      -> Conv2D:[128, [1,1], strides = [1,1], activation = 'relu', padding = "same", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv9_1']
+      -> Conv2D:[256, [3,3], strides = [1,1], activation = 'relu', padding = "valid", kernel_initializer = 'he_normal', kernel_regularizer = l2:[0.0005], name = 'conv9_2']
+      -> conv9_2
+
+
+    conv4_3 
+      -> L2Normalization: [gamma_init = 20, name = 'conv4_3_norm']
+      -> conv4_3_norm
+
+
+    conv4_3_norm 
+      -> Conv2D:[84, [3,3], padding = "same", kernel_initializer = "he_normal", kernel_regularizer = l2:[0.0005], name ="conv4_3_norm_mbox_conf"]
+      -> Reshape: [[-1, 21]]
+      -> classes_conv4_3
+
+    fc7 
+      -> Conv2D:[126, [3,3], padding = "same", kernel_initializer = "he_normal", kernel_regularizer = l2:[0.0005], name = "fc7_mbox_conf"]
+      -> Reshape: [[-1, 21]]
+      -> classes_fc7
+
+    conv6_2 
+      -> Conv2D:[126, [3,3], padding = "same", kernel_initializer = "he_normal", kernel_regularizer = l2:[0.0005], name = "conv6_2_mbox_conf"]
+      -> Reshape: [[-1, 21]]
+      -> classes_conv6_2
+
+    conv7_2 
+      -> Conv2D:[126, [3,3], padding = "same", kernel_initializer = "he_normal", kernel_regularizer = l2:[0.0005], name = "conv7_2_mbox_conf"]
+      -> Reshape: [[-1, 21]]
+      -> classes_conv7_2
+
+    conv8_2 
+      -> Conv2D:[84, [3,3], padding = "same", kernel_initializer = "he_normal", kernel_regularizer = l2:[0.0005], name = "conv8_2_mbox_conf"]
+      -> Reshape: [[-1, 21]]
+      -> classes_conv8_2
+
+    conv9_2 
+      -> Conv2D:[84, [3,3], padding = "same", kernel_initializer = "he_normal", kernel_regularizer = l2:[0.0005], name = "conv9_2_mbox_conf"]
+      -> Reshape: [[-1, 21]]
+      -> classes_conv9_2
+
+    [classes_conv4_3, classes_fc7, classes_conv6_2, classes_conv7_2, classes_conv8_2, classes_conv9_2] 
+      -> Concatenate:[axis = 1]
+      -> Activation:['softmax'] 
+      -> classes_concat
+
+
+
+    conv4_3_norm 
+      -> Conv2D:[16, [3,3], padding = "same", kernel_initializer = "he_normal", kernel_regularizer = l2:[0.0005], name ="conv4_3_norm_mbox_loc"]
+      -> boxes_conv4_3
+
+    fc7 
+      -> Conv2D:[24, [3,3], padding = "same", kernel_initializer = "he_normal", kernel_regularizer = l2:[0.0005], name = "fc7_mbox_loc"]
+      -> boxes_fc7
+
+    conv6_2 
+      -> Conv2D:[24, [3,3], padding = "same", kernel_initializer = "he_normal", kernel_regularizer = l2:[0.0005], name = "conv6_2_mbox_loc"]
+      -> boxes_conv6_2
+
+    conv7_2 
+      -> Conv2D:[24, [3,3], padding = "same", kernel_initializer = "he_normal", kernel_regularizer = l2:[0.0005], name = "conv7_2_mbox_loc"]
+      -> boxes_conv7_2
+
+    conv8_2 
+      -> Conv2D:[16, [3,3], padding = "same", kernel_initializer = "he_normal", kernel_regularizer = l2:[0.0005], name = "conv8_2_mbox_loc"]
+      -> boxes_conv8_2
+
+    conv9_2 
+      -> Conv2D:[16, [3,3], padding = "same", kernel_initializer = "he_normal", kernel_regularizer = l2:[0.0005], name = "conv9_2_mbox_loc"]
+      -> boxes_conv9_2
+
+
+    boxes_conv4_3
+      -> AnchorBoxes: [300, 300, this_scale = 0.1, next_scale = 0.2, aspect_ratios = [1.0, 2.0, 0.5], this_steps = 8, this_offsets = 0.5, name = "conv4_3_mbox_priorbox"]
+      -> Reshape: [[-1,8]]
+      -> anchors_conv4_3
+
+    boxes_fc7
+      -> AnchorBoxes: [300, 300, this_scale = 0.2, next_scale = 0.37, aspect_ratios = [1.0, 2.0, 0.5, 3.0, 0.33], this_steps = 16, this_offsets = 0.5, name = "fc7_mbox_priorbox"]
+      -> anchors_fc7
+
+    boxes_conv6_2
+      -> AnchorBoxes: [300, 300, this_scale = 0.37, next_scale = 0.54, aspect_ratios = [1.0, 2.0, 0.5, 3.0, 0.33], this_steps = 32, this_offsets = 0.5, name = "conv6_2_mbox_priorbox"]
+      -> anchors_conv6_2
+
+    boxes_conv7_2
+      -> AnchorBoxes: [300, 300, this_scale = 0.54, next_scale = 0.71, aspect_ratios = [1.0, 2.0, 0.5, 3.0, 0.33], this_steps = 64, this_offsets = 0.5, name = "conv7_2_mbox_priorbox"]
+      -> anchors_conv7_2
+
+    boxes_conv8_2
+      -> AnchorBoxes: [300, 300, this_scale = 0.71, next_scale = 0.88, aspect_ratios = [1.0, 2.0, 0.5], this_steps = 100, this_offsets = 0.5, name = "conv8_2_mbox_priorbox"]
+      -> anchors_conv8_2
+
+    boxes_conv9_2
+      -> AnchorBoxes: [300, 300, this_scale = 0.88, next_scale = 1.05, aspect_ratios = [1.0, 2.0, 0.5], this_steps = 300, this_offsets = 0.5, name = "conv9_2_mbox_priorbox"]
+      -> anchors_conv9_2
+
+
+    boxes_conv4_3
+      -> Reshape: [[-1,4]]
+      -> boxes_conv4_3
+
+    boxes_fc7
+      -> Reshape: [[-1,4]]
+      -> boxes_fc7
+
+    boxes_conv6_2
+      -> Reshape: [[-1,4]]
+      -> boxes_conv6_2
+
+    boxes_conv7_2
+      -> Reshape: [[-1,4]]
+      -> boxes_conv7_2
+
+    boxes_conv8_2
+      -> Reshape: [[-1,4]]
+      -> boxes_conv8_2
+
+    boxes_conv9_2
+      -> Reshape: [[-1,4]]
+      -> boxes_conv9_2
+
+    [boxes_conv4_3, boxes_fc7, boxes_conv6_2, boxes_conv7_2, boxes_conv8_2, boxes_conv9_2]
+      -> Concatenate: [axis = 1]
+      -> boxes_concat
+
+
+    [boxes_concat, classes_concat]
+      -> Concatenate: [axis = 2]
+      -> prediction; 
+
+source:
+    bind = "training_data.csv";
+    input:
+        img ~ from "image"
+          -> image: [shape = [300, 300], channels = 3]
+          -> ImageDataGenerator:[];
+    output:
+      label ~ from "label"
+          -> bbox: []
+          -> BBoxDataGenerator:[num_classes = 20];
+    params:
+        batch_size = 128,
+        shuffle = True,
+        shuffle_init = True;
+
+train:
+  compile:
+    optimizer = Adam:[lr = 0.001, beta_1 = 0.9, beta_2 = 0.999, epsilon = 0.0001, decay = 0.0];
+  run:
+    epochs = 2;
+  dashboard: ;
+

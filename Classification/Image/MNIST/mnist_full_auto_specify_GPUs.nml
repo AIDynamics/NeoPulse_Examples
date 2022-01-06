@@ -1,0 +1,31 @@
+oracle("mode") = "classification"
+oracle("gpus") = [0,3,4]
+
+source:
+  bind = "training_data.csv" ;
+  input:
+    x ~ from "Image"
+      -> image: [shape=[28, 28], channels=1]
+      -> ImageDataGenerator: [rescale= 0.003921568627451] ;
+  output:
+    y ~ from "Label"
+      -> flat: [10]
+      -> FlatDataGenerator: [] ;
+  params:
+    number_validation = 10000,
+    batch_size = 128 ;
+
+architecture:
+  input:  x ~ image: [shape=[28, 28], channels=1] ;
+  output: y ~ flat: [10] ;
+
+  x -> auto -> y ;
+
+train:
+  compile:
+    optimizer = auto,
+    loss = auto,
+    metrics = [Accuracy:[]] ;
+  run:
+    epochs = 2;
+  dashboard: ;

@@ -1,0 +1,33 @@
+oracle("mode")= "classification"
+oracle("gpus") = 8
+
+source:
+  bind = "training_data.csv" ;
+  input:
+    x ~ from "Video"
+      -> video: [shape=[80, 80], channels=3, seqlength=32]
+      -> ImageDataGenerator: [];
+  output:
+    y ~ from "Class"
+      -> flat: [6]
+      -> FlatDataGenerator: [] ;
+  params:
+    number_validation = 119,
+    batch_size = 16;
+
+architecture:
+    input: x ~ video: [shape=[80, 80], channels=3, seqlength=32] ;
+    output: y ~ flat: [6] ;
+
+    x -> auto -> y;
+
+train:
+  compile:
+    optimizer = auto,
+    loss = auto,
+    metrics = [Accuracy:[]] ;
+
+  run:
+    epochs = 2;
+
+  dashboard: ;

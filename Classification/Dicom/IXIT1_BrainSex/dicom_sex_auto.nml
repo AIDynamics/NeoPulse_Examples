@@ -30,7 +30,7 @@ train :
     compile:
         optimizer = Adam:[lr = 0.0001],
         loss = 'categorical_crossentropy',
-        metrics = ['accuracy'];
+        metrics = [Accuracy:[]];
     run:
         epochs = 2;
     dashboard: ;

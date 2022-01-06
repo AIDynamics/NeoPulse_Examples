@@ -44,7 +44,7 @@ train:
         decay_options = [0.0001, 0.0],
         batch_options = [64,128,256,512],
         loss = 'categorical_crossentropy',
-        metrics = ['accuracy'] ;
+        metrics = [Accuracy:[]] ;
 
     run:
         epochs = 2;

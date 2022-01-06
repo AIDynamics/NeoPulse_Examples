@@ -131,7 +131,8 @@ architecture weights "pre_trained_model/vgg_16.h5":
       -> classes_conv9_2
 
     [classes_conv4_3, classes_fc7, classes_conv6_2, classes_conv7_2, classes_conv8_2, classes_conv9_2] 
-      -> Concatenate:[axis = 1] 
+      -> Concatenate:[axis = 1]
+      -> Activation:['softmax'] 
       -> classes_concat
 
 

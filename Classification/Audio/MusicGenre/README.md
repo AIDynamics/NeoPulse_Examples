@@ -24,7 +24,7 @@ $ pip3 install <package_name>
 
 Once you've downloaded and pre-processed the data, you can start training using any of the NML scripts provided. To begin training:
 ```bash
-$ neopulse train -p <project_name> -f /absolute/path/to/music_classification_auto.nml
+$ neopulse train -p <project_name> -path /absolute/path/to/music_classification_auto.nml
 ```
 In NML file, relative path of .csv file is declared in the line:
 ```bash

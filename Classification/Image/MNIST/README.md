@@ -18,7 +18,7 @@ $ pip install <package_name>
 
 Once you've downloaded and pre-processed the data, you can start training using any of the NML scripts provided. To begin training:
 ```bash
-$ neopulse train -p <project_name> -f /absolute/path/to/mnist_full_auto.nml
+$ neopulse train -p <project_name> -path /absolute/path/to/mnist_full_auto.nml
 ```
 In NML file, relative path of .csv file is declared in the line:
 ```bash
@@ -29,6 +29,8 @@ bind = "training_data.csv" ;
 **build_csv.py:** Script creates list of training files and writes training full image paths and corresponding labels to a training CSV file.
 
 **mnist_full_auto.nml:** Features full use of the auto keyword to automatically generate the entire architecture.
+
+**mnist_full_auto_v2.nml:** Features full use of the auto keyword to automatically generate the entire architecture, in NML 2.0.
 
 **mnist_call_auto.nml:** Features the use of auto to automatically select an architecture later.
 

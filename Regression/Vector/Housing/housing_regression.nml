@@ -21,7 +21,7 @@ train:
     compile:
         optimizer=auto,
         loss=auto,
-        metrics=['mae'] ;
+        metrics=[MeanAbsoluteError:[]] ;
     run:
         epochs=2 ;
     dashboard:;

@@ -1,0 +1,23 @@
+oracle("mode") = "SSD"
+
+architecture weights "pre_trained_model/vgg_16.h5":
+         image -> auto -> label;
+
+
+source:
+    bind = "training_data.csv";
+    input:
+        image -> image: [shape = [300, 300], channels = 3];
+    output:
+        label -> bbox: [num_classes=20];
+    params:
+        batch_size = 16,
+        shuffle = True,
+        shuffle_init = True;
+
+train:
+  compile:
+    optimizer = Adam:[lr = 0.001, beta_1 = 0.9, beta_2 = 0.999, epsilon = 0.0001, decay = 0.0];
+  run:
+    epochs = 2;
+  dashboard: ;

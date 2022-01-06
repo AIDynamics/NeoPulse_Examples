@@ -1,0 +1,21 @@
+oracle("mode")="regression"
+
+source:
+    bind = 'training_data.csv';
+    input:
+        data -> number: [7];
+    output:
+        mpg -> number: [1];
+    params:
+        batch_size=32,
+        number_validation=10;
+
+architecture:
+    data -> auto -> mpg;
+
+train:
+    compile:
+        metrics=[MeanAbsoluteError:[]] ;
+    run:
+        epochs= 50;
+    dashboard: ;
